@@ -3,247 +3,142 @@ import { SiteHeader } from "./components/SiteHeader";
 
 const whatsappUrl =
   "https://wa.me/5583998458019?text=Oi%2C%20Espa%C3%A7o%20Fit!%20Quero%20agendar%20uma%20aula%20experimental.";
-
 const mapsUrl = "https://share.google/r3HigJuOwnCCQsjLc";
 
-const benefits = [
-  {
-    number: "01",
-    title: "Musculação",
-    text: "Estrutura para treinar força, resistência e evolução no seu ritmo.",
-  },
-  {
-    number: "02",
-    title: "Funcional",
-    text: "Aulas dinâmicas para ganhar condicionamento, mobilidade e disposição.",
-  },
-  {
-    number: "03",
-    title: "Rotina possível",
-    text: "Horário amplo para o treino caber de verdade no seu dia.",
-  },
-];
-
 const faqs = [
-  {
-    question: "Nunca treinei. Posso começar?",
-    answer:
-      "Pode. Chame a equipe no WhatsApp, conte seu objetivo e combine a melhor forma de começar.",
-  },
-  {
-    question: "Como funciona a aula experimental?",
-    answer:
-      "Fale com a equipe pelo WhatsApp para consultar disponibilidade e agendar sua visita.",
-  },
-  {
-    question: "Quais são os horários?",
-    answer:
-      "De segunda a sexta, das 05h às 22h. Aos sábados, das 07h às 18h.",
-  },
+  ["Nunca treinei. Posso começar?", "Pode. Chame a equipe, conte seu objetivo e combine a melhor forma de começar."],
+  ["Como funciona a aula experimental?", "Fale com a equipe pelo WhatsApp para consultar disponibilidade e agendar sua visita."],
+  ["Quais são os horários?", "De segunda a sexta, das 05h às 22h. Aos sábados, das 07h às 18h."],
 ];
 
 export default function Home() {
   return (
-    <main>
+    <main className="ref-site">
       <SiteHeader />
 
-      <section className="hero" id="inicio">
-        <div className="hero-grid">
-          <div className="hero-copy" data-reveal>
-            <p className="eyebrow">
-              <span /> Academia em São José da Mata
-            </p>
-            <h1>
-              SEU CORPO.
-              <br />
-              <em>SEU RITMO.</em>
-              <br />
-              SEU RESULTADO.
-            </h1>
-            <p className="hero-text">
-              Musculação e funcional em um ambiente feito para quem quer começar,
-              evoluir e não parar mais.
-            </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href={whatsappUrl} target="_blank" rel="noreferrer">
-                Quero minha aula experimental <span aria-hidden="true">↗</span>
-              </a>
-              <a className="text-link" href="#estrutura">
-                Conhecer a academia <span aria-hidden="true">↓</span>
-              </a>
-            </div>
-            <p className="microcopy">Resposta rápida pelo WhatsApp • Sem compromisso</p>
+      <section className="ref-hero" id="inicio">
+        <div className="ref-orb ref-orb-one" aria-hidden="true" />
+        <div className="ref-orb ref-orb-two" aria-hidden="true" />
+        <div className="ref-hero-inner" data-reveal>
+          <div className="ref-kicker"><span>EF</span> Academia em São José da Mata</div>
+          <h1>Treine melhor.<br /><em>Viva mais forte.</em></h1>
+          <p>Musculação e funcional em um espaço próximo, completo e pronto para acompanhar sua evolução.</p>
+          <div className="ref-hero-actions">
+            <a className="ref-button ref-button-primary" href="/matricula">Comece agora <span>→</span></a>
+            <a className="ref-button ref-button-ghost" href={whatsappUrl} target="_blank" rel="noreferrer">Agendar aula experimental</a>
           </div>
-
-          <div className="hero-visual" data-reveal>
-            <div className="orange-slab" aria-hidden="true" />
-            <img
-              src="/espaco-fit-fachada.png"
-              alt="Fachada da Academia Espaço Fit em São José da Mata"
-              className="hero-image"
-            />
-            <div className="open-badge">
-              <span>ABERTO</span>
-              <strong>05H — 22H</strong>
-              <small>SEGUNDA A SEXTA</small>
-            </div>
-            <div className="since-stamp" aria-label="Desde 2015">
-              <small>DESDE</small>
-              <strong>2015</strong>
-            </div>
-          </div>
+          <small>Sem compromisso · Atendimento direto pelo WhatsApp</small>
         </div>
-        <div className="hero-stripe" aria-hidden="true">
-          <span>FORÇA</span><i>•</i><span>FOCO</span><i>•</i><span>CONSTÂNCIA</span><i>•</i><span>RESULTADO</span><i>•</i><span>FORÇA</span>
+
+        <div className="ref-hero-stage" data-reveal>
+          <div className="ref-stage-photo">
+            <img src="/espaco-fit-fachada.png" alt="Fachada da Academia Espaço Fit" />
+          </div>
+          <div className="ref-float ref-float-hours">
+            <span>ABERTA HOJE</span><strong>05h — 22h</strong><small>segunda a sexta</small>
+          </div>
+          <div className="ref-float ref-float-since">
+            <span>DESDE</span><strong>2015</strong>
+          </div>
+          <div className="ref-float ref-float-community">
+            <div className="ref-avatars" aria-hidden="true"><i>F</i><i>O</i><i>C</i><i>O</i></div>
+            <strong>2,3 mil+</strong><span>seguidores no Instagram</span>
+          </div>
         </div>
       </section>
 
-      <section className="proof-strip" aria-label="Diferenciais da Espaço Fit" data-reveal>
-        <div><strong>10+</strong><span>anos fazendo história</span></div>
-        <div><strong>05H–22H</strong><span>de segunda a sexta</span></div>
-        <div><strong>2</strong><span>modalidades para evoluir</span></div>
-        <div><strong>2,3 MIL+</strong><span>seguidores no Instagram</span></div>
+      <section className="ref-trust" aria-label="Diferenciais" data-reveal>
+        <p>FEITA PARA QUEM QUER EVOLUIR</p>
+        <div><span>Saúde</span><i>✦</i><span>Foco</span><i>✦</i><span>Disciplina</span><i>✦</i><span>Resultados</span><i>✦</i><span>Comunidade</span></div>
       </section>
 
-      <section className="section training" id="estrutura" data-reveal>
-        <div className="section-intro">
-          <p className="eyebrow"><span /> TREINO COMPLETO</p>
-          <h2>TUDO O QUE VOCÊ PRECISA PARA <em>IR ALÉM.</em></h2>
-          <p>
-            Sem frescura e sem desculpa: estrutura, energia e uma equipe pronta para
-            receber você.
-          </p>
+      <section className="ref-section ref-bento-section" id="estrutura">
+        <div className="ref-section-heading" data-reveal>
+          <span className="ref-label">A ESPAÇO FIT</span>
+          <h2>Tudo o que você precisa.<br /><em>Em um só lugar.</em></h2>
+          <p>Uma experiência simples, acolhedora e sem complicação — do primeiro treino ao próximo resultado.</p>
         </div>
 
-        <div className="benefit-list">
-          {benefits.map((benefit) => (
-            <article className="benefit" key={benefit.number}>
-              <span className="benefit-number">{benefit.number}</span>
-              <h3>{benefit.title}</h3>
-              <p>{benefit.text}</p>
-              <a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label={`Quero saber mais sobre ${benefit.title}`}>
-                Saber mais <span aria-hidden="true">↗</span>
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="schedule" id="horarios" data-reveal>
-        <div className="schedule-poster">
-          <img src="/espaco-fit-horarios.png" alt="Card de horários da Academia Espaço Fit" />
-        </div>
-        <div className="schedule-content">
-          <p className="eyebrow eyebrow-light"><span /> ABERTA CEDO. ABERTA ATÉ TARDE.</p>
-          <h2>SEU TREINO CABE NA SUA <em>ROTINA.</em></h2>
-          <p className="schedule-lead">
-            Antes do trabalho, no intervalo ou no fim do dia. Escolha seu melhor
-            horário e venha treinar.
-          </p>
-          <div className="hours-row">
-            <span>SEG — SEX</span>
-            <strong>05H <i>ÀS</i> 22H</strong>
-          </div>
-          <div className="hours-row">
-            <span>SÁBADO</span>
-            <strong>07H <i>ÀS</i> 18H</strong>
-          </div>
-          <a className="button button-primary" href={whatsappUrl} target="_blank" rel="noreferrer">
-            Agendar meu primeiro treino <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </section>
-
-      <section className="section plans-preview" id="planos" data-reveal>
-        <div className="plans-preview-heading">
-          <div>
-            <p className="eyebrow"><span /> UM PLANO PARA CADA ROTINA</p>
-            <h2>ESCOLHA COMO VOCÊ QUER <em>EVOLUIR.</em></h2>
-          </div>
-          <p>Sozinho, a dois ou com a família: condições simples para você começar agora.</p>
-        </div>
-
-        <div className="plans-preview-grid">
-          <article>
-            <span>INDIVIDUAL</span>
-            <strong><small>R$</small>75,00</strong>
-            <p>Seu treino, seu ritmo e seus objetivos.</p>
+        <div className="ref-bento" data-reveal>
+          <article className="ref-bento-card ref-bento-photo" id="historia">
+            <img src="/espaco-fit-fachada.png" alt="Entrada da Espaço Fit em São José da Mata" />
+            <div><span>NOSSA CASA</span><strong>Uma academia com a energia do bairro.</strong></div>
           </article>
-          <article className="plan-highlight">
-            <span>CASAL</span>
-            <strong><small>R$</small>70,00</strong>
-            <p>Mais motivação para evoluir juntos.</p>
+          <article className="ref-bento-card ref-bento-orange" id="modalidades">
+            <span className="ref-card-icon" aria-hidden="true">01</span>
+            <div><small>MUSCULAÇÃO</small><h3>Força para superar seus limites.</h3><p>Treine resistência, potência e evolução no seu ritmo.</p></div>
           </article>
-          <article>
-            <span>+2 FAMÍLIA</span>
-            <strong><small>R$</small>65,00</strong>
-            <p>Uma condição feita para a família.</p>
+          <article className="ref-bento-card ref-bento-dark">
+            <span className="ref-card-icon" aria-hidden="true">02</span>
+            <div><small>FUNCIONAL</small><h3>Movimento para transformar sua rotina.</h3><p>Mais condicionamento, mobilidade e disposição.</p></div>
+          </article>
+          <article className="ref-bento-card ref-bento-light" id="horarios">
+            <div className="ref-card-top"><small>HORÁRIOS</small><span>ABERTO</span></div>
+            <div className="ref-time-row"><span>Segunda a sexta</span><strong>05h — 22h</strong></div>
+            <div className="ref-time-row"><span>Sábado</span><strong>07h — 18h</strong></div>
           </article>
         </div>
+      </section>
 
-        <div className="plans-preview-action">
-          <p>Escolha seu plano e finalize a matrícula com a equipe.</p>
-          <a className="button button-dark" href="/matricula">Ver planos e me matricular <span aria-hidden="true">↗</span></a>
+      <section className="ref-journey" aria-labelledby="journey-title">
+        <div className="ref-journey-copy" data-reveal>
+          <span className="ref-label">COMEÇAR É SIMPLES</span>
+          <h2 id="journey-title">Seu próximo resultado começa com <em>um passo.</em></h2>
+          <p>A gente deixa o caminho claro para você focar no que importa: treinar.</p>
+          <a className="ref-button ref-button-dark" href="/matricula">Quero começar <span>→</span></a>
+        </div>
+        <div className="ref-journey-steps">
+          <article className="ref-step ref-step-one" data-reveal><span>1</span><div><small>ESCOLHA</small><h3>Encontre o plano certo.</h3><p>Individual, casal ou família. Você decide como quer evoluir.</p></div></article>
+          <article className="ref-step ref-step-two" data-reveal><span>2</span><div><small>CONVERSE</small><h3>Fale com quem entende.</h3><p>Finalize pelo WhatsApp com atendimento direto da equipe.</p></div></article>
+          <article className="ref-step ref-step-three" data-reveal><span>3</span><div><small>TREINE</small><h3>Venha viver a experiência.</h3><p>Conheça a estrutura, encontre seu ritmo e mantenha o foco.</p></div></article>
         </div>
       </section>
 
-      <section className="section location" id="localizacao" data-reveal>
-        <div className="location-copy">
-          <p className="eyebrow"><span /> PERTINHO DE VOCÊ</p>
-          <h2>NO CORAÇÃO DE <em>SÃO JOSÉ DA MATA.</em></h2>
-          <p>
-            Venha conhecer a estrutura, conversar com a equipe e dar o primeiro
-            passo para uma rotina mais forte.
-          </p>
-          <address>
-            <small>ENDEREÇO</small>
-            <strong>São José da Mata, Campina Grande — PB</strong>
-            <span>CEP 58441-000</span>
-          </address>
-          <div className="location-actions">
-            <a className="button button-dark" href={mapsUrl} target="_blank" rel="noreferrer">
-              Traçar rota no Google <span aria-hidden="true">↗</span>
-            </a>
-            <a className="phone-link" href="tel:+5583998458019">(83) 99845-8019</a>
-          </div>
+      <section className="ref-section ref-pricing" id="planos">
+        <div className="ref-section-heading ref-pricing-heading" data-reveal>
+          <span className="ref-label">PLANOS</span>
+          <h2>Escolha seu jeito de <em>ficar mais forte.</em></h2>
+          <p>Condições simples para começar sozinho, a dois ou com a família.</p>
         </div>
-        <div className="location-image">
-          <img src="/espaco-fit-fachada.png" alt="Entrada da Academia Espaço Fit" />
-          <div className="location-tag">VOCÊ CHEGOU.</div>
+        <div className="ref-price-grid" data-reveal>
+          <article><span>INDIVIDUAL</span><p>Para treinar no seu ritmo.</p><strong><small>R$</small>75,00</strong><a href="/matricula#planos">Escolher individual <b>→</b></a></article>
+          <article className="ref-price-featured"><i>MAIS ESCOLHIDO</i><span>CASAL</span><p>Mais motivação para evoluir juntos.</p><strong><small>R$</small>70,00</strong><a href="/matricula#planos">Escolher casal <b>→</b></a></article>
+          <article><span>+2 FAMÍLIA</span><p>Uma condição feita para a família.</p><strong><small>R$</small>65,00</strong><a href="/matricula#planos">Escolher família <b>→</b></a></article>
+        </div>
+        <p className="ref-price-note">Consulte as condições de cada modalidade diretamente com a equipe.</p>
+      </section>
+
+      <section className="ref-section ref-location" id="localizacao" data-reveal>
+        <div className="ref-location-copy">
+          <span className="ref-label">PERTINHO DE VOCÊ</span>
+          <h2>São José da Mata é a nossa <em>casa.</em></h2>
+          <p>Venha conhecer a academia, conversar com a equipe e começar uma rotina mais forte.</p>
+          <div className="ref-address"><small>ENDEREÇO</small><strong>São José da Mata, Campina Grande — PB</strong><span>CEP 58441-000</span></div>
+          <div className="ref-location-actions"><a className="ref-button ref-button-dark" href={mapsUrl} target="_blank" rel="noreferrer">Traçar rota <span>↗</span></a><a href="tel:+5583998458019">(83) 99845-8019</a></div>
+        </div>
+        <div className="ref-location-visual">
+          <img src="/espaco-fit-fachada.png" alt="Fachada da academia" />
+          <div><span>VOCÊ CHEGOU</span><strong>Espaço Fit</strong></div>
         </div>
       </section>
 
-      <section className="section faq" data-reveal>
-        <div className="faq-title">
-          <p className="eyebrow"><span /> DÚVIDAS RÁPIDAS</p>
-          <h2>PRONTO PARA <em>COMEÇAR?</em></h2>
-        </div>
-        <div className="faq-list">
-          {faqs.map((item) => (
-            <details key={item.question}>
-              <summary>{item.question}<span aria-hidden="true">+</span></summary>
-              <p>{item.answer}</p>
-            </details>
-          ))}
+      <section className="ref-section ref-faq">
+        <div className="ref-section-heading" data-reveal><span className="ref-label">DÚVIDAS RÁPIDAS</span><h2>Antes de começar,<br /><em>vale perguntar.</em></h2></div>
+        <div className="ref-faq-list" data-reveal>
+          {faqs.map(([question, answer]) => <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}
         </div>
       </section>
 
-      <section className="final-cta" data-reveal>
-        <div>
-          <p className="eyebrow eyebrow-light"><span /> O MELHOR DIA PARA COMEÇAR É HOJE</p>
-          <h2>VEM SER <em>FIT.</em></h2>
-          <p>Chame no WhatsApp e agende sua aula experimental.</p>
-        </div>
-        <a className="button button-light" href="/matricula">
-          Ver planos e me matricular <span aria-hidden="true">↗</span>
-        </a>
+      <section className="ref-final" data-reveal>
+        <div className="ref-final-orb" aria-hidden="true" />
+        <span className="ref-label">MATRÍCULAS ABERTAS</span>
+        <h2>Seu melhor treino<br />pode começar <em>hoje.</em></h2>
+        <p>Escolha seu plano e finalize com a equipe pelo WhatsApp.</p>
+        <a className="ref-button ref-button-light" href="/matricula">Quero me matricular <span>→</span></a>
       </section>
 
       <SiteFooter />
-
-      <a className="mobile-whatsapp" href="/matricula">
-        Ver planos e me matricular <span aria-hidden="true">↗</span>
-      </a>
+      <a className="mobile-whatsapp" href="/matricula">Ver planos e me matricular <span>→</span></a>
     </main>
   );
 }

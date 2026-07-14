@@ -24,7 +24,7 @@ export default function EnrollmentPage() {
         </div>
       </section>
 
-      <section className="enrollment-plans" data-reveal>
+      <section className="enrollment-plans" id="planos" data-reveal>
         <div className="plans-heading">
           <span>PLANOS MENSAIS</span>
           <p>Valores informados pela academia. Consulte condições diretamente com a equipe.</p>
