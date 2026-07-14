@@ -20,7 +20,7 @@ export default function Home() {
         <div className="ref-orb ref-orb-one" aria-hidden="true" />
         <div className="ref-orb ref-orb-two" aria-hidden="true" />
         <div className="ref-hero-inner" data-reveal>
-          <div className="ref-kicker"><span>EF</span> Academia em São José da Mata</div>
+          <div className="ref-kicker"><span><img src="/ef-mark.png" alt="" /></span> Academia em São José da Mata</div>
           <h1>Treine melhor.<br /><em>Viva mais forte.</em></h1>
           <p>Musculação e funcional em um espaço próximo, completo e pronto para acompanhar sua evolução.</p>
           <div className="ref-hero-actions">
