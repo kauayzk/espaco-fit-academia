@@ -3816,3 +3816,467 @@ footer .brand-name {
     font-size: 24px;
   }
 }
+
+/* Dark gym atmosphere */
+html,
+body {
+  background: #070809;
+}
+
+.ref-site,
+.enrollment-page {
+  background: #070809;
+  color: #f7f5f1;
+}
+
+.ref-header .header-inner {
+  border-color: rgba(255,255,255,.09);
+  background: rgba(12,13,15,.92);
+  box-shadow: 0 16px 54px rgba(0,0,0,.42);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.has-scrolled .ref-header .header-inner {
+  box-shadow: 0 22px 70px rgba(0,0,0,.6);
+}
+
+.ref-header .brand-name,
+.enrollment-page .brand-name {
+  color: #fff;
+}
+
+.ref-header .brand-mark {
+  border: 1px solid rgba(255,91,26,.26);
+  background:
+    linear-gradient(135deg, rgba(255,91,26,.12), transparent 48%),
+    #050607;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), 0 8px 24px rgba(0,0,0,.35);
+}
+
+.mega-item > summary,
+.mega-direct {
+  color: #d0cdd4;
+}
+
+.mega-item > summary:hover,
+.mega-item[open] > summary,
+.mega-direct:hover {
+  background: #24262a;
+  color: #fff;
+}
+
+.mega-item > summary span {
+  color: #8d8993;
+}
+
+.mega-panel,
+.mobile-menu nav {
+  border-color: rgba(255,255,255,.1);
+  background: #111315;
+  color: #f8f6f2;
+  box-shadow: 0 30px 90px rgba(0,0,0,.62);
+}
+
+.mega-column > small {
+  color: #777981;
+}
+
+.mega-column a:hover,
+.mobile-menu nav a:hover {
+  background: #1d1f22;
+}
+
+.mega-column span {
+  color: #92949a;
+}
+
+.mega-promo {
+  border: 1px solid rgba(255,91,26,.18);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255,91,26,.2), transparent 28%),
+    #08090a;
+}
+
+.mega-promo-orange {
+  border-color: rgba(255,255,255,.12);
+  background: var(--ref-orange);
+}
+
+.mega-mini-stat {
+  border-color: rgba(255,255,255,.1);
+  background: #181a1d;
+}
+
+.mobile-menu > summary {
+  border: 1px solid rgba(255,255,255,.08);
+  background: #1c1e21;
+}
+
+.mobile-menu > summary span {
+  background: #fff;
+}
+
+.ref-header .header-cta {
+  background: var(--ref-orange);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(255,91,26,.22);
+}
+
+.ref-header .header-cta:hover {
+  background: #ff7138;
+}
+
+.ref-hero {
+  color: #fff;
+  background:
+    linear-gradient(115deg, transparent 0 69%, rgba(255,91,26,.055) 69% 70%, transparent 70% 76%, rgba(255,255,255,.022) 76% 77%, transparent 77%),
+    radial-gradient(circle at 17% 22%, rgba(255,91,26,.2), transparent 27%),
+    radial-gradient(circle at 84% 19%, rgba(255,91,26,.07), transparent 24%),
+    #070809;
+}
+
+.ref-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .36;
+  background: repeating-linear-gradient(135deg, transparent 0 34px, rgba(255,255,255,.018) 34px 35px);
+  mask-image: linear-gradient(#000, transparent 78%);
+}
+
+.ref-hero-inner,
+.ref-hero-stage,
+.ref-orb {
+  position: relative;
+  z-index: 2;
+}
+
+.ref-kicker {
+  border-color: rgba(255,255,255,.11);
+  background: rgba(18,20,22,.78);
+  color: #c8c5ca;
+  box-shadow: inset 0 1px rgba(255,255,255,.04);
+}
+
+.ref-hero-inner > p,
+.ref-section-heading > p,
+.ref-journey-copy > p,
+.ref-location-copy > p,
+.ref-final > p {
+  color: #aaa7ae;
+}
+
+.ref-hero-inner > small {
+  color: #777980;
+}
+
+.ref-button-ghost {
+  border-color: rgba(255,255,255,.14);
+  background: #141619;
+  color: #fff;
+}
+
+.ref-button-ghost:hover {
+  border-color: var(--ref-orange);
+  background: #1c1e21;
+}
+
+.ref-button-dark {
+  background: var(--ref-orange);
+  color: #fff;
+  box-shadow: 0 14px 34px rgba(255,91,26,.2);
+}
+
+.ref-hero-stage {
+  border-color: rgba(255,255,255,.1);
+  background: linear-gradient(145deg, #232529, #08090a);
+  box-shadow: 0 44px 130px rgba(0,0,0,.58);
+}
+
+.ref-stage-photo img {
+  filter: saturate(.72) contrast(1.15) brightness(.72);
+}
+
+.ref-float:not(.ref-float-since) {
+  border-color: rgba(255,255,255,.12);
+  background: rgba(15,17,19,.88);
+  box-shadow: 0 22px 60px rgba(0,0,0,.46);
+}
+
+.ref-float:not(.ref-float-since) strong {
+  color: #fff;
+}
+
+.ref-float span,
+.ref-float small {
+  color: #999ba1;
+}
+
+.ref-avatars i {
+  border-color: #111315;
+  background: #26292d;
+  color: #fff;
+}
+
+.ref-avatars i:first-child {
+  background: #4a2417;
+  color: #ff9369;
+}
+
+.ref-orb-one {
+  background: #572211;
+}
+
+.ref-orb-two {
+  background: #24262a;
+}
+
+.ref-trust {
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  background:
+    repeating-linear-gradient(135deg, transparent 0 32px, rgba(255,255,255,.018) 32px 33px),
+    #0c0d0f;
+}
+
+.ref-bento-section,
+.ref-pricing {
+  background: #08090a;
+}
+
+.ref-label {
+  color: var(--ref-orange);
+}
+
+.ref-bento-card {
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.ref-bento-photo img {
+  filter: saturate(.72) contrast(1.12) brightness(.78);
+}
+
+.ref-bento-dark {
+  background: #15171a;
+}
+
+.ref-bento-light {
+  color: #fff;
+  background:
+    radial-gradient(circle at 92% 4%, rgba(255,91,26,.14), transparent 30%),
+    #15171a;
+}
+
+.ref-card-top > span {
+  background: rgba(255,91,26,.14);
+  color: #ff8c60;
+}
+
+.ref-time-row {
+  border-color: rgba(255,255,255,.11);
+}
+
+.ref-time-row > span {
+  color: #96989e;
+}
+
+.ref-journey {
+  border: 1px solid rgba(255,255,255,.07);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255,91,26,.08), transparent 26%),
+    #0d0f11;
+}
+
+.ref-step {
+  border-color: rgba(255,255,255,.08);
+  background: #15171a;
+  box-shadow: 0 22px 70px rgba(0,0,0,.3);
+}
+
+.ref-step > span {
+  background: #25282c;
+  color: #fff;
+}
+
+.ref-step-two > span {
+  background: rgba(255,91,26,.16);
+  color: #ff8c60;
+}
+
+.ref-step-three > span {
+  background: var(--ref-orange);
+  color: #fff;
+}
+
+.ref-step small,
+.ref-step p {
+  color: #92949a;
+}
+
+.ref-price-grid article {
+  border-color: rgba(255,255,255,.1);
+  background: #121416;
+  box-shadow: 0 24px 70px rgba(0,0,0,.18);
+}
+
+.ref-price-grid article > p,
+.ref-price-note {
+  color: #92949a;
+}
+
+.ref-price-grid article > a {
+  border-color: rgba(255,255,255,.12);
+  background: #191b1e;
+  color: #fff;
+}
+
+.ref-price-grid article > a:hover {
+  border-color: var(--ref-orange);
+  background: var(--ref-orange);
+}
+
+.ref-price-featured {
+  border-color: rgba(255,91,26,.46) !important;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255,91,26,.22), transparent 35%),
+    #1a1513 !important;
+  box-shadow: 0 28px 90px rgba(255,91,26,.1) !important;
+}
+
+.ref-location {
+  border: 1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at 5% 12%, rgba(255,91,26,.12), transparent 25%),
+    #0d0f11;
+}
+
+.ref-location-visual {
+  background: #202226;
+}
+
+.ref-location-visual img {
+  filter: saturate(.7) contrast(1.1) brightness(.78);
+}
+
+.ref-location-visual > div {
+  border: 1px solid rgba(255,255,255,.1);
+  background: #111315;
+  color: #fff;
+  box-shadow: 0 20px 60px rgba(0,0,0,.48);
+}
+
+.ref-faq {
+  background: #0d0f11;
+}
+
+.ref-faq-list,
+.ref-faq-list details {
+  border-color: rgba(255,255,255,.11);
+}
+
+.ref-faq-list summary span {
+  background: #1c1e21;
+  color: var(--ref-orange);
+}
+
+.ref-faq-list details p {
+  color: #97999f;
+}
+
+.ref-final {
+  background:
+    linear-gradient(115deg, rgba(0,0,0,.18), transparent 40%),
+    var(--ref-orange);
+}
+
+.ref-site footer,
+.enrollment-page footer {
+  border-top: 1px solid rgba(255,255,255,.07);
+  background: #050607;
+}
+
+.enrollment-page .enrollment-hero {
+  color: #fff;
+  background:
+    repeating-linear-gradient(128deg, transparent 0 86px, rgba(255,91,26,.035) 87px 88px),
+    radial-gradient(circle at 20% 20%, rgba(255,91,26,.17), transparent 28%),
+    #070809;
+}
+
+.enrollment-page .enrollment-hero::after {
+  border-color: var(--ref-orange);
+  opacity: .13;
+}
+
+.enrollment-page .back-link,
+.enrollment-page .enrollment-hero-inner > p:last-child,
+.enrollment-page .eyebrow-light,
+.plans-heading p {
+  color: #96989e;
+}
+
+.enrollment-plans {
+  color: #fff;
+}
+
+.plan-card {
+  border-color: rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at 100% 0, rgba(255,91,26,.06), transparent 34%),
+    #121416;
+  box-shadow: 0 20px 65px rgba(0,0,0,.25);
+}
+
+.plan-card:hover {
+  box-shadow: 0 28px 80px rgba(0,0,0,.42);
+}
+
+.plan-card.is-selected {
+  border-color: var(--ref-orange);
+  box-shadow: 0 26px 80px rgba(255,91,26,.12);
+}
+
+.plan-card:focus-within {
+  outline-color: var(--ref-orange);
+}
+
+.plan-price small,
+.plan-name {
+  color: #fff;
+}
+
+.plan-note {
+  color: #9a9ca2;
+}
+
+.plan-select {
+  border-color: rgba(255,255,255,.1);
+}
+
+.enrollment-page .enrollment-box {
+  border: 1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at 90% 8%, rgba(255,91,26,.11), transparent 26%),
+    #0d0f11;
+}
+
+.enrollment-page .enrollment-trust > div {
+  border-color: rgba(255,255,255,.08) !important;
+  background: #111315;
+}
+
+.enrollment-page .enrollment-trust span {
+  color: #8f9197;
+}
+
+@media (max-width: 640px) {
+  .ref-header .brand-name {
+    color: #fff;
+  }
+
+  .mobile-menu nav {
+    background: #111315;
+  }
+}
