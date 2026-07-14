@@ -4280,3 +4280,573 @@ body {
     background: #111315;
   }
 }
+
+/* Fluid mixed transitions */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: ref-view-old .36s cubic-bezier(.55, 0, 1, .45) both;
+}
+
+::view-transition-new(root) {
+  animation: ref-view-new .72s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@keyframes ref-view-old {
+  to { opacity: 0; filter: blur(8px); transform: scale(.985); }
+}
+
+@keyframes ref-view-new {
+  from { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(18px) scale(1.01); }
+  to { opacity: 1; clip-path: inset(0); transform: none; }
+}
+
+@keyframes ref-page-enter {
+  from { opacity: 0; filter: blur(6px); transform: translateY(14px) scale(.995); }
+  to { opacity: 1; filter: blur(0); transform: none; }
+}
+
+.motion-ready body > main {
+  animation: ref-page-enter .78s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.motion-ready body::after {
+  content: "";
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(110deg, transparent 0 48%, rgba(255,255,255,.08) 49%, transparent 50%),
+    var(--ref-orange);
+  transform: translate3d(-105%, 0, 0) skewX(-7deg);
+  transform-origin: left;
+  transition: transform .42s cubic-bezier(.7, 0, .2, 1);
+}
+
+.page-leaving body > main {
+  opacity: .12;
+  filter: blur(7px);
+  transform: scale(.985);
+  transition: opacity .34s ease, filter .34s ease, transform .34s ease;
+}
+
+.page-leaving body::after {
+  transform: translate3d(0, 0, 0) skewX(0);
+}
+
+[data-reveal] {
+  filter: blur(7px);
+  transition:
+    opacity .82s cubic-bezier(.16, 1, .3, 1),
+    transform .82s cubic-bezier(.16, 1, .3, 1),
+    filter .82s cubic-bezier(.16, 1, .3, 1);
+  transition-delay: calc(var(--reveal-order, 0) * 45ms);
+}
+
+[data-reveal][data-reveal-motion="up"] {
+  transform: translate3d(0, 34px, 0);
+}
+
+[data-reveal][data-reveal-motion="left"] {
+  transform: translate3d(-38px, 15px, 0) rotate(-.35deg);
+}
+
+[data-reveal][data-reveal-motion="right"] {
+  transform: translate3d(38px, 15px, 0) rotate(.35deg);
+}
+
+[data-reveal][data-reveal-motion="scale"] {
+  transform: translate3d(0, 18px, 0) scale(.965);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+.mega-panel {
+  filter: blur(8px);
+  transform: translate(-50%, -13px) scale(.965);
+  transform-origin: 50% 0;
+  transition:
+    opacity .34s cubic-bezier(.16, 1, .3, 1),
+    transform .4s cubic-bezier(.16, 1, .3, 1),
+    filter .34s ease,
+    visibility .34s ease;
+}
+
+.mega-item[open] > .mega-panel,
+.mega-item:hover > .mega-panel,
+.mega-item:focus-within > .mega-panel {
+  filter: blur(0);
+  transform: translate(-50%, 0) scale(1);
+}
+
+.mega-panel .mega-column a,
+.mega-panel .mega-promo,
+.mega-panel .mega-mini-stat {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .32s ease, transform .4s cubic-bezier(.16, 1, .3, 1), background .2s ease;
+}
+
+.mega-item[open] .mega-panel .mega-column a,
+.mega-item:hover .mega-panel .mega-column a,
+.mega-item:focus-within .mega-panel .mega-column a,
+.mega-item[open] .mega-panel .mega-promo,
+.mega-item:hover .mega-panel .mega-promo,
+.mega-item:focus-within .mega-panel .mega-promo,
+.mega-item[open] .mega-panel .mega-mini-stat,
+.mega-item:hover .mega-panel .mega-mini-stat,
+.mega-item:focus-within .mega-panel .mega-mini-stat {
+  opacity: 1;
+  transform: none;
+}
+
+.mega-panel .mega-column a:nth-child(2) { transition-delay: 45ms; }
+.mega-panel .mega-column a:nth-child(3) { transition-delay: 85ms; }
+.mega-panel .mega-promo,
+.mega-panel .mega-mini-stat { transition-delay: 120ms; }
+
+.ref-button,
+.button,
+.plan-card,
+.ref-price-grid article,
+.ref-step,
+.ref-bento-card {
+  transition-timing-function: cubic-bezier(.16, 1, .3, 1);
+  transition-duration: .42s;
+}
+
+.plan-card {
+  overflow: hidden;
+  transition: transform .45s cubic-bezier(.16, 1, .3, 1), border-color .35s ease, box-shadow .45s ease;
+}
+
+.plan-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(145deg, rgba(255,91,26,.14), transparent 48%);
+  transition: opacity .4s ease;
+}
+
+.plan-card.is-selected {
+  transform: translateY(-9px) scale(1.012);
+}
+
+.plan-card.is-selected::after {
+  opacity: 1;
+}
+
+.plan-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.plan-check {
+  transition: border .3s ease, transform .4s cubic-bezier(.16, 1, .3, 1), background .3s ease;
+}
+
+.is-selected .plan-check {
+  transform: scale(1.15);
+}
+
+section[id] {
+  scroll-margin-top: 105px;
+}
+
+/* Automated enrollment flow */
+.enrollment-progress {
+  width: min(100%, 920px);
+  margin: 0 auto 54px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+}
+
+.enrollment-progress li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #73757b;
+}
+
+.enrollment-progress li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 20px;
+  left: 44px;
+  right: 12px;
+  height: 2px;
+  background: rgba(255,255,255,.1);
+}
+
+.enrollment-progress li > span {
+  position: relative;
+  z-index: 1;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 50%;
+  background: #101214;
+  font-size: 12px;
+  font-weight: 900;
+  transition: background .4s ease, border-color .4s ease, box-shadow .4s ease, transform .4s cubic-bezier(.16, 1, .3, 1);
+}
+
+.enrollment-progress li > div {
+  position: relative;
+  z-index: 1;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  background: #070809;
+}
+
+.enrollment-progress strong {
+  color: #b7b8bc;
+  font-size: 12px;
+}
+
+.enrollment-progress small {
+  margin-top: 3px;
+  font-size: 9px;
+}
+
+.enrollment-progress .is-current > span,
+.enrollment-progress .is-complete > span {
+  border-color: var(--ref-orange);
+  background: var(--ref-orange);
+  color: #fff;
+  box-shadow: 0 0 0 7px rgba(255,91,26,.1);
+}
+
+.enrollment-progress .is-current > span {
+  animation: enrollment-pulse 2.2s ease-in-out infinite;
+}
+
+.enrollment-progress .is-current strong,
+.enrollment-progress .is-complete strong {
+  color: #fff;
+}
+
+@keyframes enrollment-pulse {
+  50% { box-shadow: 0 0 0 12px rgba(255,91,26,0); transform: scale(1.04); }
+}
+
+.enrollment-page .enrollment-box {
+  padding: clamp(24px, 4vw, 58px);
+  grid-template-columns: .78fr 1.22fr;
+  gap: clamp(38px, 6vw, 84px);
+  border-radius: 36px;
+}
+
+.enrollment-summary {
+  align-self: start;
+}
+
+.enrollment-summary > p {
+  max-width: 520px;
+}
+
+.selected-plan-summary {
+  margin-top: 34px;
+  padding: 24px;
+  display: grid;
+  border: 1px solid rgba(255,91,26,.28);
+  border-radius: 22px;
+  background: rgba(255,91,26,.07);
+  overflow: hidden;
+}
+
+.selected-plan-summary small {
+  color: #8f9197;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .15em;
+}
+
+.selected-plan-summary strong {
+  margin-top: 10px;
+  font-family: var(--display);
+  font-size: clamp(31px, 3vw, 46px);
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.selected-plan-summary > span {
+  margin-top: 7px;
+  color: var(--ref-orange);
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.selected-plan-summary > span small {
+  color: #a0a1a6;
+  font-family: var(--body);
+  font-size: 9px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.automation-benefits {
+  margin: 26px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 11px;
+  color: #aaaab0;
+  font-size: 12px;
+  list-style: none;
+}
+
+.automation-benefits span {
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255,91,26,.13);
+  color: var(--ref-orange);
+  font-weight: 900;
+}
+
+.enrollment-page .enrollment-form {
+  padding: clamp(24px, 3.5vw, 44px);
+  display: block;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 28px;
+  background: #151719;
+  box-shadow: 0 24px 70px rgba(0,0,0,.28);
+}
+
+.form-heading {
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.form-heading > span {
+  min-width: 54px;
+  padding: 8px 9px;
+  border-radius: 999px;
+  background: var(--ref-orange);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.form-heading > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-heading strong {
+  font-size: 16px;
+}
+
+.form-heading small {
+  margin-top: 4px;
+  color: #85878d;
+  font-size: 9px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.enrollment-action .form-field {
+  min-width: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field-wide {
+  grid-column: 1 / -1;
+}
+
+.enrollment-action .form-field > span {
+  margin-bottom: 9px;
+  color: #c9cace;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.enrollment-action .form-field input,
+.enrollment-action .form-field select,
+.enrollment-action .form-field textarea {
+  width: 100%;
+  min-height: 56px;
+  padding: 0 16px;
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 14px;
+  background: #0d0f11;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  outline: none;
+  transition: border-color .25s ease, box-shadow .25s ease, background .25s ease, transform .25s ease;
+}
+
+.enrollment-action .form-field textarea {
+  min-height: 94px;
+  padding-top: 15px;
+  resize: vertical;
+}
+
+.enrollment-action .form-field select {
+  cursor: pointer;
+}
+
+.enrollment-action .form-field select option {
+  background: #111315;
+  color: #fff;
+}
+
+.enrollment-action .form-field input:focus,
+.enrollment-action .form-field select:focus,
+.enrollment-action .form-field textarea:focus {
+  border-color: var(--ref-orange);
+  background: #111315;
+  box-shadow: 0 0 0 4px rgba(255,91,26,.11);
+  transform: translateY(-1px);
+}
+
+.enrollment-action .form-field input::placeholder,
+.enrollment-action .form-field textarea::placeholder {
+  color: #67696f;
+}
+
+.form-field > small {
+  margin-top: 6px;
+  color: #66686e;
+  font-size: 8px;
+  text-align: right;
+}
+
+.enrollment-submit {
+  width: 100%;
+  min-height: 62px;
+  margin-top: 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 14px 38px rgba(255,91,26,.2);
+}
+
+.enrollment-submit b {
+  font-size: 20px;
+  transition: transform .3s cubic-bezier(.16, 1, .3, 1);
+}
+
+.enrollment-submit:not(:disabled):hover b {
+  transform: translateX(5px);
+}
+
+.enrollment-submit:disabled {
+  background: #2a2c30;
+  color: #77797f;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.enrollment-action .form-privacy {
+  max-width: 470px;
+  margin: 12px auto 0;
+  color: #74767c;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 1050px) {
+  .enrollment-page .enrollment-box {
+    grid-template-columns: 1fr;
+  }
+
+  .enrollment-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 28px;
+  }
+
+  .enrollment-summary > .step-label,
+  .enrollment-summary > h2,
+  .enrollment-summary > p {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .enrollment-progress {
+    margin-bottom: 42px;
+  }
+
+  .enrollment-progress li {
+    justify-content: center;
+  }
+
+  .enrollment-progress li > div {
+    display: none;
+  }
+
+  .enrollment-progress li:not(:last-child)::after {
+    left: calc(50% + 21px);
+    right: calc(-50% + 21px);
+  }
+
+  .plan-card.is-selected {
+    transform: translateY(-4px);
+  }
+
+  .enrollment-summary {
+    display: block;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field-wide {
+    grid-column: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  .motion-ready body > main,
+  .enrollment-progress .is-current > span {
+    animation: none;
+  }
+
+  .motion-ready body::after {
+    display: none;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
