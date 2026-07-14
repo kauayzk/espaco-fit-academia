@@ -1,3 +1,6 @@
+import { SiteFooter } from "./components/SiteFooter";
+import { SiteHeader } from "./components/SiteHeader";
+
 const whatsappUrl =
   "https://wa.me/5583998458019?text=Oi%2C%20Espa%C3%A7o%20Fit!%20Quero%20agendar%20uma%20aula%20experimental.";
 
@@ -42,31 +45,11 @@ const faqs = [
 export default function Home() {
   return (
     <main>
-      <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Espaço Fit — início">
-          <span className="brand-mark" aria-hidden="true">
-            EF
-          </span>
-          <span className="brand-name">
-            ESPAÇO<span>FIT</span>
-            <small>ACADEMIA</small>
-          </span>
-        </a>
-
-        <nav className="nav" aria-label="Navegação principal">
-          <a href="#estrutura">Estrutura</a>
-          <a href="#horarios">Horários</a>
-          <a href="#localizacao">Localização</a>
-        </nav>
-
-        <a className="header-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
-          Falar no WhatsApp <span aria-hidden="true">↗</span>
-        </a>
-      </header>
+      <SiteHeader />
 
       <section className="hero" id="inicio">
         <div className="hero-grid">
-          <div className="hero-copy">
+          <div className="hero-copy" data-reveal>
             <p className="eyebrow">
               <span /> Academia em São José da Mata
             </p>
@@ -92,7 +75,7 @@ export default function Home() {
             <p className="microcopy">Resposta rápida pelo WhatsApp • Sem compromisso</p>
           </div>
 
-          <div className="hero-visual">
+          <div className="hero-visual" data-reveal>
             <div className="orange-slab" aria-hidden="true" />
             <img
               src="/espaco-fit-fachada.png"
@@ -115,14 +98,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="proof-strip" aria-label="Diferenciais da Espaço Fit">
+      <section className="proof-strip" aria-label="Diferenciais da Espaço Fit" data-reveal>
         <div><strong>10+</strong><span>anos fazendo história</span></div>
         <div><strong>05H–22H</strong><span>de segunda a sexta</span></div>
         <div><strong>2</strong><span>modalidades para evoluir</span></div>
         <div><strong>2,3 MIL+</strong><span>seguidores no Instagram</span></div>
       </section>
 
-      <section className="section training" id="estrutura">
+      <section className="section training" id="estrutura" data-reveal>
         <div className="section-intro">
           <p className="eyebrow"><span /> TREINO COMPLETO</p>
           <h2>TUDO O QUE VOCÊ PRECISA PARA <em>IR ALÉM.</em></h2>
@@ -146,7 +129,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="schedule" id="horarios">
+      <section className="schedule" id="horarios" data-reveal>
         <div className="schedule-poster">
           <img src="/espaco-fit-horarios.png" alt="Card de horários da Academia Espaço Fit" />
         </div>
@@ -171,7 +154,40 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section location" id="localizacao">
+      <section className="section plans-preview" id="planos" data-reveal>
+        <div className="plans-preview-heading">
+          <div>
+            <p className="eyebrow"><span /> UM PLANO PARA CADA ROTINA</p>
+            <h2>ESCOLHA COMO VOCÊ QUER <em>EVOLUIR.</em></h2>
+          </div>
+          <p>Sozinho, a dois ou com a família: condições simples para você começar agora.</p>
+        </div>
+
+        <div className="plans-preview-grid">
+          <article>
+            <span>INDIVIDUAL</span>
+            <strong><small>R$</small>75,00</strong>
+            <p>Seu treino, seu ritmo e seus objetivos.</p>
+          </article>
+          <article className="plan-highlight">
+            <span>CASAL</span>
+            <strong><small>R$</small>70,00</strong>
+            <p>Mais motivação para evoluir juntos.</p>
+          </article>
+          <article>
+            <span>+2 FAMÍLIA</span>
+            <strong><small>R$</small>65,00</strong>
+            <p>Uma condição feita para a família.</p>
+          </article>
+        </div>
+
+        <div className="plans-preview-action">
+          <p>Escolha seu plano e finalize a matrícula com a equipe.</p>
+          <a className="button button-dark" href="/matricula">Ver planos e me matricular <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section className="section location" id="localizacao" data-reveal>
         <div className="location-copy">
           <p className="eyebrow"><span /> PERTINHO DE VOCÊ</p>
           <h2>NO CORAÇÃO DE <em>SÃO JOSÉ DA MATA.</em></h2>
@@ -197,7 +213,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section faq">
+      <section className="section faq" data-reveal>
         <div className="faq-title">
           <p className="eyebrow"><span /> DÚVIDAS RÁPIDAS</p>
           <h2>PRONTO PARA <em>COMEÇAR?</em></h2>
@@ -212,33 +228,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="final-cta">
+      <section className="final-cta" data-reveal>
         <div>
           <p className="eyebrow eyebrow-light"><span /> O MELHOR DIA PARA COMEÇAR É HOJE</p>
           <h2>VEM SER <em>FIT.</em></h2>
           <p>Chame no WhatsApp e agende sua aula experimental.</p>
         </div>
-        <a className="button button-light" href={whatsappUrl} target="_blank" rel="noreferrer">
-          Quero treinar na Espaço Fit <span aria-hidden="true">↗</span>
+        <a className="button button-light" href="/matricula">
+          Ver planos e me matricular <span aria-hidden="true">↗</span>
         </a>
       </section>
 
-      <footer>
-        <a className="brand brand-footer" href="#inicio" aria-label="Espaço Fit — voltar ao início">
-          <span className="brand-mark" aria-hidden="true">EF</span>
-          <span className="brand-name">ESPAÇO<span>FIT</span><small>ACADEMIA</small></span>
-        </a>
-        <p>Musculação e funcional em São José da Mata.</p>
-        <div className="footer-links">
-          <a href="https://www.instagram.com/espacofitsjm/" target="_blank" rel="noreferrer">Instagram ↗</a>
-          <a href="tel:+5583998458019">Telefone</a>
-          <a href={mapsUrl} target="_blank" rel="noreferrer">Como chegar ↗</a>
-        </div>
-        <small>© {new Date().getFullYear()} Espaço Fit Academia</small>
-      </footer>
+      <SiteFooter />
 
-      <a className="mobile-whatsapp" href={whatsappUrl} target="_blank" rel="noreferrer">
-        Agendar aula experimental <span aria-hidden="true">↗</span>
+      <a className="mobile-whatsapp" href="/matricula">
+        Ver planos e me matricular <span aria-hidden="true">↗</span>
       </a>
     </main>
   );
