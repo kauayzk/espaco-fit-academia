@@ -1,5 +1,6 @@
 import { ensureDbSchema, getDb } from "../../../db";
 import { trackingEvents } from "../../../db/schema";
+import { isVercelRuntime } from "../../platform";
 
 const allowedEvents = new Set(["cta_click", "plan_selected", "form_started", "whatsapp_opened", "gallery_click"]);
 
@@ -8,6 +9,8 @@ function clean(value: unknown, max = 160) {
 }
 
 export async function POST(request: Request) {
+  if (isVercelRuntime()) return Response.json({ ok: true }, { status: 202 });
+
   try {
     const payload = (await request.json()) as Record<string, unknown>;
     const event = clean(payload.event, 40);

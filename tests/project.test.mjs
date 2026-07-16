@@ -15,7 +15,7 @@ test("identifies the project as the Espaço Fit portfolio", async () => {
 
   assert.match(packageJson, /"name": "espaco-fit-academia"/);
   assert.match(readme, /Espaço Fit Academia/);
-  assert.match(readme, /https:\/\/espaco-fit-sjm\.kauayzk\.chatgpt\.site\//);
+  assert.match(readme, /https:\/\/espaco-fit-academia-sjm\.vercel\.app\//);
   assert.match(layout, /Espaço Fit Academia/);
   assert.match(home, /Academia em São José da Mata/);
   assert.doesNotMatch(packageJson, /starter/i);
@@ -34,6 +34,7 @@ test("keeps the enrollment and WhatsApp conversion flow", async () => {
   assert.match(enrollment, /Salvar e abrir o WhatsApp/);
   assert.match(leadsApi, /consent/);
   assert.match(leadsApi, /preferredDate/);
+  assert.match(leadsApi, /delivery: "whatsapp"/);
   assert.match(eventsApi, /whatsapp_opened/);
 });
 

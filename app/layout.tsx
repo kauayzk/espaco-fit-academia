@@ -3,8 +3,10 @@ import { MotionShell } from "./components/MotionShell";
 import { AnalyticsTracker } from "./components/AnalyticsTracker";
 import "./globals.css";
 
+const siteUrl = "https://espaco-fit-academia-sjm.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://espaco-fit-sjm.kauayzk.chatgpt.site"),
+  metadataBase: new URL(siteUrl),
   title: "Espaço Fit Academia | São José da Mata",
   description:
     "Musculação e funcional em São José da Mata, Campina Grande. Agende sua aula experimental na Espaço Fit.",
@@ -46,9 +48,9 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "ExerciseGym",
               name: "Espaço Fit Academia",
-              url: "https://espaco-fit-sjm.kauayzk.chatgpt.site",
+              url: siteUrl,
               telephone: "+55 83 99845-8019",
-              image: "https://espaco-fit-sjm.kauayzk.chatgpt.site/espaco-fit-fachada.png",
+              image: `${siteUrl}/espaco-fit-fachada.png`,
               priceRange: "R$ 65–75",
               address: {
                 "@type": "PostalAddress",

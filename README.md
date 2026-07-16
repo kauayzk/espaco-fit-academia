@@ -2,7 +2,7 @@
 
 Landing page de alta conversão criada para a **Espaço Fit Academia**, em São José da Mata — PB. O projeto combina identidade visual dark, navegação fluida e uma jornada de matrícula integrada ao WhatsApp.
 
-[**Acessar o site ao vivo →**](https://espaco-fit-sjm.kauayzk.chatgpt.site/)
+[**Acessar o site ao vivo →**](https://espaco-fit-academia-sjm.vercel.app/)
 
 ![Prévia da landing page Espaço Fit](./public/og.png)
 

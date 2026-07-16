@@ -1,6 +1,7 @@
 import { desc, eq, sql } from "drizzle-orm";
 import { ensureDbSchema, getDb } from "../../../db";
 import { leads, trackingEvents } from "../../../db/schema";
+import { isVercelRuntime } from "../../platform";
 
 const validPlans = new Set(["Individual", "Casal", "+2 Família"]);
 const validObjectives = new Set(["Emagrecimento", "Ganho de massa", "Condicionamento", "Saúde e qualidade de vida"]);
@@ -30,6 +31,13 @@ export async function POST(request: Request) {
 
     if (name.length < 3 || phoneDigits.length < 10 || !validPlans.has(plan) || !validObjectives.has(objective) || !validPeriods.has(preferredPeriod) || !/^\d{4}-\d{2}-\d{2}$/.test(preferredDate) || !consent) {
       return Response.json({ error: "Confira os campos obrigatórios." }, { status: 400 });
+    }
+
+    if (isVercelRuntime()) {
+      return Response.json({
+        lead: { id: Date.now(), createdAt: new Date().toISOString() },
+        delivery: "whatsapp",
+      }, { status: 201 });
     }
 
     await ensureDbSchema();
@@ -77,6 +85,8 @@ export async function POST(request: Request) {
 }
 
 export async function PATCH(request: Request) {
+  if (isVercelRuntime()) return Response.json({ ok: true });
+
   try {
     const payload = (await request.json()) as { id?: number; whatsappOpened?: boolean };
     if (!Number.isInteger(payload.id) || payload.whatsappOpened !== true) return Response.json({ error: "Dados inválidos." }, { status: 400 });
