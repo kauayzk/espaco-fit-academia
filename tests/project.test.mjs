@@ -22,20 +22,18 @@ test("identifies the project as the Espaço Fit portfolio", async () => {
   assert.doesNotMatch(readme, /vinext-starter/i);
 });
 
-test("keeps the enrollment and WhatsApp conversion flow", async () => {
+test("keeps a privacy-safe demonstration enrollment flow", async () => {
   const [enrollment, leadsApi, eventsApi] = await Promise.all([
     read("app/matricula/PlanSelector.tsx"),
     read("app/api/leads/route.ts"),
     read("app/api/events/route.ts"),
   ]);
 
-  assert.match(enrollment, /\/api\/leads/);
-  assert.match(enrollment, /wa\.me/);
-  assert.match(enrollment, /Salvar e abrir o WhatsApp/);
-  assert.match(leadsApi, /consent/);
-  assert.match(leadsApi, /preferredDate/);
-  assert.match(leadsApi, /delivery: "whatsapp"/);
-  assert.match(eventsApi, /whatsapp_opened/);
+  assert.match(enrollment, /Concluir demonstração/);
+  assert.match(enrollment, /Nenhum dado foi enviado ou armazenado/);
+  assert.doesNotMatch(enrollment, /wa\.me/);
+  assert.match(leadsApi, /Nenhum dado foi enviado ou armazenado/);
+  assert.match(eventsApi, /demo_completed/);
 });
 
 test("protects the owner dashboard with an environment allowlist", async () => {

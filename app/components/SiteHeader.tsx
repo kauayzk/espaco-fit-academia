@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { BrandLogo } from "./BrandLogo";
 
-const whatsappUrl =
-  "https://wa.me/5583998458019?text=Oi%2C%20Espa%C3%A7o%20Fit!%20Quero%20agendar%20uma%20aula%20experimental.";
-
 export function SiteHeader() {
   return (
     <header className="site-header ref-header">
@@ -55,7 +52,7 @@ export function SiteHeader() {
             <div className="mega-panel mega-start">
               <div className="mega-column">
                 <small>SEU PRÓXIMO PASSO</small>
-                <a href={whatsappUrl} target="_blank" rel="noreferrer"><b>Aula experimental</b><span>Converse com a equipe pelo WhatsApp.</span></a>
+                <Link href="/matricula"><b>Aula experimental</b><span>Veja como funciona o fluxo demonstrativo.</span></Link>
                 <Link href="/matricula"><b>Matricule-se</b><span>Escolha o plano e finalize online.</span></Link>
               </div>
               <div className="mega-mini-stat"><strong>10+</strong><span>anos treinando São José da Mata</span></div>

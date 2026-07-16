@@ -1963,6 +1963,16 @@ section[id] {
   font-size: 11px;
 }
 
+.form-success {
+  margin: 16px 0 0 !important;
+  padding: 13px 15px;
+  border: 1px solid rgba(76, 211, 126, .28);
+  border-radius: 13px;
+  background: rgba(76, 211, 126, .09);
+  color: #9bf0b9 !important;
+  font-size: 11px;
+}
+
 /* Owner dashboard */
 .owner-dashboard,
 .admin-denied,

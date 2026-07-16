@@ -9,7 +9,7 @@ export function SiteFooter() {
       <p>Musculação e funcional em São José da Mata.</p>
       <div className="footer-links">
         <a href="https://www.instagram.com/espacofitsjm/" target="_blank" rel="noreferrer">Instagram ↗</a>
-        <a href="tel:+5583998458019">Telefone</a>
+        <span>Projeto demonstrativo</span>
         <a href={mapsUrl} target="_blank" rel="noreferrer">Como chegar ↗</a>
         <a href="/gestao">Área do proprietário</a>
       </div>

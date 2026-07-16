@@ -2,7 +2,7 @@ import { ensureDbSchema, getDb } from "../../../db";
 import { trackingEvents } from "../../../db/schema";
 import { isVercelRuntime } from "../../platform";
 
-const allowedEvents = new Set(["cta_click", "plan_selected", "form_started", "whatsapp_opened", "gallery_click"]);
+const allowedEvents = new Set(["cta_click", "plan_selected", "form_started", "demo_completed", "gallery_click"]);
 
 function clean(value: unknown, max = 160) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";

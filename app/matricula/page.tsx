@@ -8,7 +8,7 @@ import { getSiteSettings } from "../site-settings";
 
 export const metadata: Metadata = {
   title: "Matricule-se | Espaço Fit Academia",
-  description: "Escolha seu plano e fale com a equipe da Espaço Fit pelo WhatsApp.",
+  description: "Escolha um plano e experimente a demonstração de matrícula da Espaço Fit.",
 };
 
 export default async function EnrollmentPage() {
