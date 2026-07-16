@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BrandLogo } from "./BrandLogo";
 
 const whatsappUrl =
@@ -16,19 +17,19 @@ export function SiteHeader() {
             <div className="mega-panel mega-panel-wide">
               <div className="mega-column">
                 <small>CONHEÇA A ESPAÇO FIT</small>
-                <a href="/#estrutura"><b>Estrutura completa</b><span>Um espaço para começar e evoluir.</span></a>
-                <a href="/#modalidades"><b>Musculação e funcional</b><span>Duas formas de ficar mais forte.</span></a>
+                <Link href="/#estrutura"><b>Estrutura completa</b><span>Um espaço para começar e evoluir.</span></Link>
+                <Link href="/#modalidades"><b>Musculação e funcional</b><span>Duas formas de ficar mais forte.</span></Link>
               </div>
               <div className="mega-column">
                 <small>PLANEJE SEU TREINO</small>
-                <a href="/#horarios"><b>Horários</b><span>Seg–sex 05h–22h · Sáb 07h–18h.</span></a>
-                <a href="/#localizacao"><b>Como chegar</b><span>São José da Mata, Campina Grande.</span></a>
+                <Link href="/#horarios"><b>Horários</b><span>Seg–sex 05h–22h · Sáb 07h–18h.</span></Link>
+                <Link href="/#localizacao"><b>Como chegar</b><span>São José da Mata, Campina Grande.</span></Link>
               </div>
-              <a className="mega-promo" href="/#historia">
+              <Link className="mega-promo" href="/#historia">
                 <span>DESDE 2015</span>
                 <strong>Uma academia com a energia do bairro.</strong>
                 <em>Conheça nossa história →</em>
-              </a>
+              </Link>
             </div>
           </details>
 
@@ -37,15 +38,15 @@ export function SiteHeader() {
             <div className="mega-panel mega-plans">
               <div className="mega-column">
                 <small>ESCOLHA SEU PLANO</small>
-                <a href="/matricula#planos"><b>Individual</b><span>R$ 75,00</span></a>
-                <a href="/matricula#planos"><b>Casal</b><span>R$ 70,00</span></a>
-                <a href="/matricula#planos"><b>+2 Família</b><span>R$ 65,00</span></a>
+                <Link href="/matricula#planos"><b>Individual</b><span>R$ 75,00</span></Link>
+                <Link href="/matricula#planos"><b>Casal</b><span>R$ 70,00</span></Link>
+                <Link href="/matricula#planos"><b>+2 Família</b><span>R$ 65,00</span></Link>
               </div>
-              <a className="mega-promo mega-promo-orange" href="/matricula">
+              <Link className="mega-promo mega-promo-orange" href="/matricula">
                 <span>MATRÍCULAS ABERTAS</span>
                 <strong>Escolha o plano que acompanha sua rotina.</strong>
                 <em>Ver todos os planos →</em>
-              </a>
+              </Link>
             </div>
           </details>
 
@@ -55,7 +56,7 @@ export function SiteHeader() {
               <div className="mega-column">
                 <small>SEU PRÓXIMO PASSO</small>
                 <a href={whatsappUrl} target="_blank" rel="noreferrer"><b>Aula experimental</b><span>Converse com a equipe pelo WhatsApp.</span></a>
-                <a href="/matricula"><b>Matricule-se</b><span>Escolha o plano e finalize online.</span></a>
+                <Link href="/matricula"><b>Matricule-se</b><span>Escolha o plano e finalize online.</span></Link>
               </div>
               <div className="mega-mini-stat"><strong>10+</strong><span>anos treinando São José da Mata</span></div>
             </div>
@@ -67,18 +68,18 @@ export function SiteHeader() {
         <details className="mobile-menu">
           <summary aria-label="Abrir menu"><span /> <span /> <span /></summary>
           <nav aria-label="Navegação móvel">
-            <a href="/#estrutura">A academia</a>
-            <a href="/#modalidades">Modalidades</a>
-            <a href="/#horarios">Horários</a>
-            <a href="/#planos">Planos</a>
-            <a href="/#localizacao">Localização</a>
-            <a href="/matricula">Matricule-se</a>
+            <Link href="/#estrutura">A academia</Link>
+            <Link href="/#modalidades">Modalidades</Link>
+            <Link href="/#horarios">Horários</Link>
+            <Link href="/#planos">Planos</Link>
+            <Link href="/#localizacao">Localização</Link>
+            <Link href="/matricula">Matricule-se</Link>
           </nav>
         </details>
 
-        <a className="header-cta" href="/matricula" data-track="header_matricula">
+        <Link className="header-cta" href="/matricula" data-track="header_matricula">
           Matricule-se <span aria-hidden="true">→</span>
-        </a>
+        </Link>
       </div>
     </header>
   );

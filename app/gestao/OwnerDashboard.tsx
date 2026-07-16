@@ -89,7 +89,10 @@ export function OwnerDashboard({ adminName, signOutUrl }: { adminName: string; s
     }
   }, []);
 
-  useEffect(() => { void load(); }, [load]);
+  useEffect(() => {
+    const loadTimer = window.setTimeout(() => void load(), 0);
+    return () => window.clearTimeout(loadTimer);
+  }, [load]);
 
   const filtered = useMemo(() => {
     const term = search.trim().toLowerCase();

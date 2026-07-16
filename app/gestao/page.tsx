@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getAdminUser } from "../admin-auth";
 import { chatGPTSignOutPath, requireChatGPTUser } from "../chatgpt-auth";
 import { BrandLogo } from "../components/BrandLogo";
@@ -16,7 +17,7 @@ export default async function ManagementPage() {
         <span>ACESSO RESTRITO</span>
         <h1>Este painel é exclusivo do responsável pela academia.</h1>
         <p>Você entrou com uma conta que não está autorizada para visualizar os contatos.</p>
-        <a href="/">Voltar ao site</a>
+        <Link href="/">Voltar ao site</Link>
       </main>
     );
   }

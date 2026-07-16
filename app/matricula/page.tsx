@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { BrandLogo } from "../components/BrandLogo";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
@@ -18,7 +19,7 @@ export default async function EnrollmentPage() {
 
       <section className="enrollment-hero">
         <div className="enrollment-hero-inner" data-reveal>
-          <a className="back-link" href="/">← Voltar para o início</a>
+          <Link className="back-link" href="/">← Voltar para o início</Link>
           <BrandLogo href="/" className="enrollment-logo" />
           <p className="eyebrow eyebrow-light"><span /> MATRÍCULAS ABERTAS</p>
           <h1>ESCOLHA SEU PLANO.<br /><em>COMECE AGORA.</em></h1>
