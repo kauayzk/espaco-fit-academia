@@ -1,5 +1,6 @@
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
+import { getSiteSettings } from "./site-settings";
 
 const whatsappUrl =
   "https://wa.me/5583998458019?text=Oi%2C%20Espa%C3%A7o%20Fit!%20Quero%20agendar%20uma%20aula%20experimental.";
@@ -11,7 +12,8 @@ const faqs = [
   ["Quais são os horários?", "De segunda a sexta, das 05h às 22h. Aos sábados, das 07h às 18h."],
 ];
 
-export default function Home() {
+export default async function Home() {
+  const settings = await getSiteSettings();
   return (
     <main className="ref-site">
       <SiteHeader />
@@ -24,10 +26,15 @@ export default function Home() {
           <h1>Treine melhor.<br /><em>Viva mais forte.</em></h1>
           <p>Musculação e funcional em um espaço próximo, completo e pronto para acompanhar sua evolução.</p>
           <div className="ref-hero-actions">
-            <a className="ref-button ref-button-primary" href="/matricula">Comece agora <span>→</span></a>
-            <a className="ref-button ref-button-ghost" href={whatsappUrl} target="_blank" rel="noreferrer">Agendar aula experimental</a>
+            <a className="ref-button ref-button-primary" href="/matricula" data-track="hero_matricula">Comece agora <span>→</span></a>
+            <a className="ref-button ref-button-ghost" href={whatsappUrl} target="_blank" rel="noreferrer" data-track="hero_aula_experimental">Agendar aula experimental</a>
           </div>
           <small>Sem compromisso · Atendimento direto pelo WhatsApp</small>
+          <div className="ref-hero-facts" aria-label="Informações rápidas">
+            <span><small>PLANOS</small><strong>A partir de R$ {settings.priceFamilia}</strong></span>
+            <span><small>HORÁRIOS</small><strong>Seg–sex, {settings.weekdayHours}</strong></span>
+            <span><small>LOCAL</small><strong>São José da Mata</strong></span>
+          </div>
         </div>
 
         <div className="ref-hero-stage" data-reveal>
@@ -35,7 +42,7 @@ export default function Home() {
             <img src="/espaco-fit-fachada.png" alt="Fachada da Academia Espaço Fit" />
           </div>
           <div className="ref-float ref-float-hours">
-            <span>ABERTA HOJE</span><strong>05h — 22h</strong><small>segunda a sexta</small>
+            <span>ABERTA HOJE</span><strong>{settings.weekdayHours}</strong><small>segunda a sexta</small>
           </div>
           <div className="ref-float ref-float-since">
             <span>DESDE</span><strong>2015</strong>
@@ -74,8 +81,8 @@ export default function Home() {
           </article>
           <article className="ref-bento-card ref-bento-light" id="horarios">
             <div className="ref-card-top"><small>HORÁRIOS</small><span>ABERTO</span></div>
-            <div className="ref-time-row"><span>Segunda a sexta</span><strong>05h — 22h</strong></div>
-            <div className="ref-time-row"><span>Sábado</span><strong>07h — 18h</strong></div>
+            <div className="ref-time-row"><span>Segunda a sexta</span><strong>{settings.weekdayHours}</strong></div>
+            <div className="ref-time-row"><span>Sábado</span><strong>{settings.saturdayHours}</strong></div>
           </article>
         </div>
       </section>
@@ -101,9 +108,9 @@ export default function Home() {
           <p>Condições simples para começar sozinho, a dois ou com a família.</p>
         </div>
         <div className="ref-price-grid" data-reveal>
-          <article><span>INDIVIDUAL</span><p>Para treinar no seu ritmo.</p><strong><small>R$</small>75,00</strong><a href="/matricula#planos">Escolher individual <b>→</b></a></article>
-          <article className="ref-price-featured"><i>MAIS ESCOLHIDO</i><span>CASAL</span><p>Mais motivação para evoluir juntos.</p><strong><small>R$</small>70,00</strong><a href="/matricula#planos">Escolher casal <b>→</b></a></article>
-          <article><span>+2 FAMÍLIA</span><p>Uma condição feita para a família.</p><strong><small>R$</small>65,00</strong><a href="/matricula#planos">Escolher família <b>→</b></a></article>
+          <article><span>INDIVIDUAL</span><p>Para treinar no seu ritmo.</p><strong><small>R$</small>{settings.priceIndividual}</strong><a href="/matricula#planos" data-track="plano_individual">Escolher individual <b>→</b></a></article>
+          <article className="ref-price-featured"><i>MAIS ESCOLHIDO</i><span>CASAL</span><p>Mais motivação para evoluir juntos.</p><strong><small>R$</small>{settings.priceCasal}</strong><a href="/matricula#planos" data-track="plano_casal">Escolher casal <b>→</b></a></article>
+          <article><span>+2 FAMÍLIA</span><p>Uma condição feita para a família.</p><strong><small>R$</small>{settings.priceFamilia}</strong><a href="/matricula#planos" data-track="plano_familia">Escolher família <b>→</b></a></article>
         </div>
         <p className="ref-price-note">Consulte as condições de cada modalidade diretamente com a equipe.</p>
       </section>
@@ -122,6 +129,35 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="ref-proof" data-reveal>
+        <div className="ref-proof-copy">
+          <span className="ref-label">CONFIANÇA LOCAL</span>
+          <h2>Uma academia que faz parte da rotina do bairro.</h2>
+          <p>Informações reais para você decidir com segurança antes do primeiro treino.</p>
+          <a href="https://www.instagram.com/espacofitsjm/" target="_blank" rel="noreferrer" data-track="prova_instagram">Acompanhar a Espaço Fit no Instagram ↗</a>
+        </div>
+        <div className="ref-proof-grid">
+          <article><strong>2015</strong><span>ano em que essa história começou</span></article>
+          <article><strong>2,3 mil+</strong><span>pessoas acompanhando no Instagram</span></article>
+          <article><strong>{settings.weekdayHours}</strong><span>horário de segunda a sexta</span></article>
+          <article><strong>3 planos</strong><span>individual, casal e família</span></article>
+        </div>
+      </section>
+
+      <section className="ref-section ref-real-gallery" id="galeria">
+        <div className="ref-section-heading" data-reveal>
+          <span className="ref-label">ESPAÇO FIT DE VERDADE</span>
+          <h2>Conheça antes de <em>começar.</em></h2>
+          <p>Fachada, horários e condições divulgadas pela própria academia — sem imagens genéricas.</p>
+        </div>
+        <div className="real-gallery-grid" data-reveal>
+          <figure className="gallery-main"><img src="/espaco-fit-fachada.png" alt="Fachada real da Academia Espaço Fit" /><figcaption><span>NOSSA CASA</span><strong>São José da Mata</strong></figcaption></figure>
+          <figure><img src="/espaco-fit-horarios.png" alt="Horários oficiais da Espaço Fit" /><figcaption><span>HORÁRIOS</span><strong>Treine no seu ritmo</strong></figcaption></figure>
+          <figure><img src="/espaco-fit-valores.png" alt="Planos e valores oficiais da Espaço Fit" /><figcaption><span>PLANOS</span><strong>Condições para começar</strong></figcaption></figure>
+        </div>
+        <div className="gallery-content-note" data-reveal><span>📸</span><p><strong>Próximo passo de conteúdo:</strong> adicionar fotos reais dos equipamentos, aulas e professores assim que a academia enviar os arquivos.</p></div>
+      </section>
+
       <section className="ref-section ref-faq">
         <div className="ref-section-heading" data-reveal><span className="ref-label">DÚVIDAS RÁPIDAS</span><h2>Antes de começar,<br /><em>vale perguntar.</em></h2></div>
         <div className="ref-faq-list" data-reveal>
@@ -131,14 +167,18 @@ export default function Home() {
 
       <section className="ref-final" data-reveal>
         <div className="ref-final-orb" aria-hidden="true" />
-        <span className="ref-label">MATRÍCULAS ABERTAS</span>
+        <span className="ref-label">{settings.announcement.toUpperCase()}</span>
         <h2>Seu melhor treino<br />pode começar <em>hoje.</em></h2>
         <p>Escolha seu plano e finalize com a equipe pelo WhatsApp.</p>
         <a className="ref-button ref-button-light" href="/matricula">Quero me matricular <span>→</span></a>
       </section>
 
       <SiteFooter />
-      <a className="mobile-whatsapp" href="/matricula">Ver planos e me matricular <span>→</span></a>
+      <nav className="mobile-action-bar" aria-label="Ações rápidas">
+        <a href="#planos" data-track="mobile_planos"><span>Planos</span><strong>A partir de R$ {settings.priceFamilia}</strong></a>
+        <a href="/matricula" data-track="mobile_agendar"><span>Agendar</span><strong>Primeiro treino</strong></a>
+        <a href={whatsappUrl} target="_blank" rel="noreferrer" data-track="mobile_whatsapp"><span>WhatsApp</span><strong>Falar agora</strong></a>
+      </nav>
     </main>
   );
 }

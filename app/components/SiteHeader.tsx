@@ -76,7 +76,7 @@ export function SiteHeader() {
           </nav>
         </details>
 
-        <a className="header-cta" href="/matricula">
+        <a className="header-cta" href="/matricula" data-track="header_matricula">
           Matricule-se <span aria-hidden="true">→</span>
         </a>
       </div>

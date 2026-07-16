@@ -3,13 +3,15 @@ import { BrandLogo } from "../components/BrandLogo";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { PlanSelector } from "./PlanSelector";
+import { getSiteSettings } from "../site-settings";
 
 export const metadata: Metadata = {
   title: "Matricule-se | Espaço Fit Academia",
   description: "Escolha seu plano e fale com a equipe da Espaço Fit pelo WhatsApp.",
 };
 
-export default function EnrollmentPage() {
+export default async function EnrollmentPage() {
+  const settings = await getSiteSettings();
   return (
     <main className="enrollment-page">
       <SiteHeader />
@@ -29,7 +31,7 @@ export default function EnrollmentPage() {
           <span>PLANOS MENSAIS</span>
           <p>Valores informados pela academia. Consulte condições diretamente com a equipe.</p>
         </div>
-        <PlanSelector />
+        <PlanSelector prices={{ individual: settings.priceIndividual, casal: settings.priceCasal, familia: settings.priceFamilia }} />
       </section>
 
       <section className="enrollment-trust" data-reveal>
