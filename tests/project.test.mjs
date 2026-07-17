@@ -36,7 +36,7 @@ test("keeps a privacy-safe demonstration enrollment flow", async () => {
   assert.match(eventsApi, /demo_completed/);
 });
 
-test("keeps the hero compact and only one mega menu active", async () => {
+test("keeps the original centered hero compact and only one mega menu active", async () => {
   const [header, styles, motion] = await Promise.all([
     read("app/components/SiteHeader.tsx"),
     read("app/globals.css"),
@@ -46,9 +46,10 @@ test("keeps the hero compact and only one mega menu active", async () => {
   assert.match(header, /useState<MenuId \| null>/);
   assert.match(header, /aria-expanded=/);
   assert.match(styles, /\.mega-item:not\(\.is-open\) > \.mega-panel/);
-  assert.match(styles, /grid-template-columns: minmax\(0, \.84fr\)/);
-  assert.match(styles, /\.ref-orb \{[\s\S]*display: none/);
-  assert.match(motion, /const revealMotions = \["up"\]/);
+  assert.match(styles, /\.ref-hero \{[\s\S]*min-height: auto/);
+  assert.match(styles, /\.ref-hero \{[\s\S]*display: block/);
+  assert.match(styles, /\.ref-orb \{[\s\S]*position: absolute/);
+  assert.match(motion, /const revealMotions = \["up", "left", "scale", "right"\]/);
 });
 
 test("protects the owner dashboard with an environment allowlist", async () => {

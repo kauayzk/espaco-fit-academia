@@ -40,7 +40,7 @@ export default async function Home() {
             <img src="/espaco-fit-fachada.png" alt="Fachada da Academia Espaço Fit" />
           </div>
           <div className="ref-float ref-float-hours">
-            <span>HORÁRIO</span><strong>{settings.weekdayHours}</strong><small>segunda a sexta</small>
+            <span>ABERTA HOJE</span><strong>{settings.weekdayHours}</strong><small>segunda a sexta</small>
           </div>
           <div className="ref-float ref-float-since">
             <span>DESDE</span><strong>2015</strong>
@@ -153,6 +153,7 @@ export default async function Home() {
           <figure><img src="/espaco-fit-horarios.png" alt="Horários oficiais da Espaço Fit" /><figcaption><span>HORÁRIOS</span><strong>Treine no seu ritmo</strong></figcaption></figure>
           <figure><img src="/espaco-fit-valores.png" alt="Planos e valores oficiais da Espaço Fit" /><figcaption><span>PLANOS</span><strong>Condições para começar</strong></figcaption></figure>
         </div>
+        <div className="gallery-content-note" data-reveal><span>📸</span><p><strong>Próximo passo de conteúdo:</strong> adicionar fotos reais dos equipamentos, aulas e professores assim que a academia enviar os arquivos.</p></div>
       </section>
 
       <section className="ref-section ref-faq">
