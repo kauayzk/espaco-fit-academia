@@ -36,6 +36,21 @@ test("keeps a privacy-safe demonstration enrollment flow", async () => {
   assert.match(eventsApi, /demo_completed/);
 });
 
+test("keeps the hero compact and only one mega menu active", async () => {
+  const [header, styles, motion] = await Promise.all([
+    read("app/components/SiteHeader.tsx"),
+    read("app/globals.css"),
+    read("app/components/MotionShell.tsx"),
+  ]);
+
+  assert.match(header, /useState<MenuId \| null>/);
+  assert.match(header, /aria-expanded=/);
+  assert.match(styles, /\.mega-item:not\(\.is-open\) > \.mega-panel/);
+  assert.match(styles, /grid-template-columns: minmax\(0, \.84fr\)/);
+  assert.match(styles, /\.ref-orb \{[\s\S]*display: none/);
+  assert.match(motion, /const revealMotions = \["up"\]/);
+});
+
 test("protects the owner dashboard with an environment allowlist", async () => {
   const [managementPage, adminAuth, gitignore] = await Promise.all([
     read("app/gestao/page.tsx"),

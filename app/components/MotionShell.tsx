@@ -7,7 +7,7 @@ export function MotionShell() {
     const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const root = document.documentElement;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const revealMotions = ["up", "left", "scale", "right"];
+    const revealMotions = ["up"];
 
     root.classList.add("motion-ready");
     root.classList.remove("page-leaving");
@@ -61,7 +61,7 @@ export function MotionShell() {
 
       event.preventDefault();
       root.classList.add("page-leaving");
-      window.setTimeout(() => window.location.assign(destination.href), 420);
+      window.setTimeout(() => window.location.assign(destination.href), 180);
     };
 
     const handlePageShow = () => root.classList.remove("page-leaving");
