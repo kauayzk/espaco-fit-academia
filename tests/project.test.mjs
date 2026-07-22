@@ -52,6 +52,7 @@ test("keeps the original centered hero compact and only one mega menu active", a
   assert.match(styles, /\.mobile-menu\.is-open nav/);
   assert.match(styles, /overflow-x: clip/);
   assert.match(styles, /\.motion-ready body::after \{[\s\S]*display: none !important/);
+  assert.match(styles, /\.plan-card > \.plan-check,[\s\S]*\.plan-card > \.popular-tag \{[\s\S]*position: absolute/);
   assert.match(motion, /const revealMotions = \["up", "left", "scale", "right"\]/);
 });
 
