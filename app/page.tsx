@@ -3,10 +3,12 @@ import { SiteHeader } from "./components/SiteHeader";
 import { getSiteSettings } from "./site-settings";
 
 const mapsUrl = "https://share.google/r3HigJuOwnCCQsjLc";
+const whatsappUrl =
+  "https://wa.me/5583998458019?text=Oi%2C%20Espa%C3%A7o%20Fit!%20Quero%20agendar%20uma%20aula%20experimental.";
 
 const faqs = [
   ["Nunca treinei. Posso começar?", "Pode. Chame a equipe, conte seu objetivo e combine a melhor forma de começar."],
-  ["Como funciona a aula experimental?", "Nesta demonstração, você pode simular o fluxo de escolha do plano e agendamento."],
+  ["Como funciona a aula experimental?", "Fale com a equipe pelo WhatsApp para consultar disponibilidade e agendar sua visita."],
   ["Quais são os horários?", "De segunda a sexta, das 05h às 22h. Aos sábados, das 07h às 18h."],
 ];
 
@@ -25,9 +27,9 @@ export default async function Home() {
           <p>Musculação e funcional em um espaço próximo, completo e pronto para acompanhar sua evolução.</p>
           <div className="ref-hero-actions">
             <a className="ref-button ref-button-primary" href="/matricula" data-track="hero_matricula">Comece agora <span>→</span></a>
-            <a className="ref-button ref-button-ghost" href="/matricula" data-track="hero_aula_experimental">Simular aula experimental</a>
+            <a className="ref-button ref-button-ghost" href={whatsappUrl} target="_blank" rel="noreferrer" data-track="hero_aula_experimental">Agendar aula experimental</a>
           </div>
-          <small>Experiência demonstrativa · Nenhum contato real é realizado</small>
+          <small>Sem compromisso · Atendimento direto pelo WhatsApp</small>
           <div className="ref-hero-facts" aria-label="Informações rápidas">
             <span><small>PLANOS</small><strong>A partir de R$ {settings.priceFamilia}</strong></span>
             <span><small>HORÁRIOS</small><strong>Seg–sex, {settings.weekdayHours}</strong></span>
@@ -94,7 +96,7 @@ export default async function Home() {
         </div>
         <div className="ref-journey-steps">
           <article className="ref-step ref-step-one" data-reveal><span>1</span><div><small>ESCOLHA</small><h3>Encontre o plano certo.</h3><p>Individual, casal ou família. Você decide como quer evoluir.</p></div></article>
-          <article className="ref-step ref-step-two" data-reveal><span>2</span><div><small>SIMULE</small><h3>Veja o fluxo completo.</h3><p>Preencha dados fictícios e confira como seria a experiência de matrícula.</p></div></article>
+          <article className="ref-step ref-step-two" data-reveal><span>2</span><div><small>CONVERSE</small><h3>Fale com quem entende.</h3><p>Finalize pelo WhatsApp com atendimento direto da equipe.</p></div></article>
           <article className="ref-step ref-step-three" data-reveal><span>3</span><div><small>TREINE</small><h3>Venha viver a experiência.</h3><p>Conheça a estrutura, encontre seu ritmo e mantenha o foco.</p></div></article>
         </div>
       </section>
@@ -119,7 +121,7 @@ export default async function Home() {
           <h2>São José da Mata é a nossa <em>casa.</em></h2>
           <p>Venha conhecer a academia, conversar com a equipe e começar uma rotina mais forte.</p>
           <div className="ref-address"><small>ENDEREÇO</small><strong>São José da Mata, Campina Grande — PB</strong><span>CEP 58441-000</span></div>
-          <div className="ref-location-actions"><a className="ref-button ref-button-dark" href={mapsUrl} target="_blank" rel="noreferrer">Traçar rota <span>↗</span></a></div>
+          <div className="ref-location-actions"><a className="ref-button ref-button-dark" href={mapsUrl} target="_blank" rel="noreferrer">Traçar rota <span>↗</span></a><a href="tel:+5583998458019">(83) 99845-8019</a></div>
         </div>
         <div className="ref-location-visual">
           <img src="/espaco-fit-fachada.png" alt="Fachada da academia" />
@@ -142,20 +144,6 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="ref-section ref-real-gallery" id="galeria">
-        <div className="ref-section-heading" data-reveal>
-          <span className="ref-label">ESPAÇO FIT DE VERDADE</span>
-          <h2>Conheça antes de <em>começar.</em></h2>
-          <p>Fachada, horários e condições divulgadas pela própria academia — sem imagens genéricas.</p>
-        </div>
-        <div className="real-gallery-grid" data-reveal>
-          <figure className="gallery-main"><img src="/espaco-fit-fachada.png" alt="Fachada real da Academia Espaço Fit" /><figcaption><span>NOSSA CASA</span><strong>São José da Mata</strong></figcaption></figure>
-          <figure><img src="/espaco-fit-horarios.png" alt="Horários oficiais da Espaço Fit" /><figcaption><span>HORÁRIOS</span><strong>Treine no seu ritmo</strong></figcaption></figure>
-          <figure><img src="/espaco-fit-valores.png" alt="Planos e valores oficiais da Espaço Fit" /><figcaption><span>PLANOS</span><strong>Condições para começar</strong></figcaption></figure>
-        </div>
-        <div className="gallery-content-note" data-reveal><span>📸</span><p><strong>Próximo passo de conteúdo:</strong> adicionar fotos reais dos equipamentos, aulas e professores assim que a academia enviar os arquivos.</p></div>
-      </section>
-
       <section className="ref-section ref-faq">
         <div className="ref-section-heading" data-reveal><span className="ref-label">DÚVIDAS RÁPIDAS</span><h2>Antes de começar,<br /><em>vale perguntar.</em></h2></div>
         <div className="ref-faq-list" data-reveal>
@@ -167,7 +155,7 @@ export default async function Home() {
         <div className="ref-final-orb" aria-hidden="true" />
         <span className="ref-label">{settings.announcement.toUpperCase()}</span>
         <h2>Seu melhor treino<br />pode começar <em>hoje.</em></h2>
-        <p>Escolha seu plano e conheça a experiência demonstrativa de matrícula.</p>
+        <p>Escolha seu plano e finalize com a equipe pelo WhatsApp.</p>
         <a className="ref-button ref-button-light" href="/matricula">Quero me matricular <span>→</span></a>
       </section>
 
@@ -175,7 +163,7 @@ export default async function Home() {
       <nav className="mobile-action-bar" aria-label="Ações rápidas">
         <a href="#planos" data-track="mobile_planos"><span>Planos</span><strong>A partir de R$ {settings.priceFamilia}</strong></a>
         <a href="/matricula" data-track="mobile_agendar"><span>Agendar</span><strong>Primeiro treino</strong></a>
-        <a href="/matricula" data-track="mobile_demo"><span>Demonstração</span><strong>Simular contato</strong></a>
+        <a href={whatsappUrl} target="_blank" rel="noreferrer" data-track="mobile_whatsapp"><span>WhatsApp</span><strong>Falar agora</strong></a>
       </nav>
     </main>
   );

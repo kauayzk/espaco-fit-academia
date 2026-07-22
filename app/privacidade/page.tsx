@@ -4,7 +4,7 @@ import { SiteFooter } from "../components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Privacidade | Espaço Fit Academia",
-  description: "Informações sobre o uso demonstrativo do formulário de matrícula.",
+  description: "Como a Espaço Fit utiliza os dados enviados na solicitação de matrícula.",
 };
 
 export default function PrivacyPage() {
@@ -13,11 +13,12 @@ export default function PrivacyPage() {
       <header><BrandLogo /><a href="/matricula">← Voltar para a matrícula</a></header>
       <article>
         <span>AVISO DE PRIVACIDADE</span>
-        <h1>Esta é uma experiência de portfólio.</h1>
-        <p className="privacy-lead">O formulário de matrícula funciona apenas como demonstração visual e não realiza contato com a academia.</p>
-        <section><h2>Os dados são enviados?</h2><p>Não. A simulação termina no próprio navegador e não envia os campos preenchidos para a academia, WhatsApp ou banco de dados.</p></section>
-        <section><h2>O que devo preencher?</h2><p>Use somente informações fictícias para experimentar o fluxo demonstrativo.</p></section>
-        <section><h2>Qual é a finalidade?</h2><p>Apresentar a experiência, o design e a automação que poderiam ser utilizados em um projeto real.</p></section>
+        <h1>Seus dados servem para cuidar do seu atendimento.</h1>
+        <p className="privacy-lead">Ao enviar uma solicitação de matrícula, você compartilha informações diretamente com a Espaço Fit Academia.</p>
+        <section><h2>Quais dados são coletados?</h2><p>Nome, telefone, plano de interesse, objetivo, experiência com treino, data e período desejados para a visita e observações informadas voluntariamente.</p></section>
+        <section><h2>Para que os dados são utilizados?</h2><p>Para responder sua solicitação, organizar o atendimento, confirmar disponibilidade, acompanhar a possível matrícula e entender quais canais trazem novos interessados.</p></section>
+        <section><h2>Com quem são compartilhados?</h2><p>Os dados são destinados à equipe responsável pelo atendimento da Espaço Fit. O WhatsApp só recebe as informações quando você revisa e envia a mensagem preparada pelo site.</p></section>
+        <section><h2>Como solicitar alteração ou exclusão?</h2><p>Fale com a academia pelo telefone <a href="tel:+5583998458019">(83) 99845-8019</a> e informe que deseja consultar, corrigir ou excluir seus dados.</p></section>
         <small>Última atualização: julho de 2026.</small>
       </article>
       <SiteFooter />

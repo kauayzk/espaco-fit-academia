@@ -1,6 +1,6 @@
 # Espaço Fit Academia
 
-Landing page demonstrativa criada para a **Espaço Fit Academia**, em São José da Mata — PB. O projeto combina identidade visual dark, navegação fluida e uma jornada simulada de matrícula.
+Landing page de alta conversão criada para a **Espaço Fit Academia**, em São José da Mata — PB. O projeto combina identidade visual dark, navegação fluida e uma jornada de matrícula integrada ao WhatsApp.
 
 [**Acessar o site ao vivo →**](https://espaco-fit-academia-sjm.vercel.app/)
 
@@ -16,7 +16,7 @@ O site foi desenvolvido para transformar visitas em contatos qualificados e, ao 
 - Mega menu, animações e transições suaves durante a navegação
 - Apresentação de estrutura, horários, planos e diferenciais
 - Fluxo guiado de matrícula com validação dos dados
-- Fluxo demonstrativo de matrícula sem envio de dados pessoais
+- Mensagem de WhatsApp gerada automaticamente para a equipe
 - Estrutura preparada para captação de leads com Cloudflare D1 e Drizzle ORM
 - Painel protegido para acompanhamento, filtros e exportação de contatos
 - Eventos de conversão e página de privacidade

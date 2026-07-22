@@ -29,7 +29,9 @@ export function PlanSelector({ prices }: { prices: { individual: string; casal: 
   const [experience, setExperience] = useState(experiences[0]);
   const [notes, setNotes] = useState("");
   const [consent, setConsent] = useState(false);
-  const [demoComplete, setDemoComplete] = useState(false);
+  const [website, setWebsite] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const formStarted = useRef(false);
 
   const currentPlan = plans.find((plan) => plan.id === selectedPlan) ?? plans[0];
@@ -55,11 +57,75 @@ export function PlanSelector({ prices }: { prices: { individual: string; casal: 
     });
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const buildWhatsappUrl = (leadId: number) => {
+    const message = [
+      "Olá, equipe Espaço Fit! Acabei de preencher minha matrícula no site.",
+      "",
+      "*DADOS DO ALUNO*",
+      `Código: EF-${leadId}`,
+      `Nome: ${name.trim()}`,
+      `WhatsApp: ${phone}`,
+      `Plano escolhido: ${currentPlan.name}`,
+      `Valor informado: R$ ${currentPlan.price}`,
+      `Objetivo: ${objective}`,
+      `Data desejada para conhecer: ${preferredDate.split("-").reverse().join("/")}`,
+      `Melhor período: ${period}`,
+      `Experiência: ${experience}`,
+      notes.trim() ? `Observações: ${notes.trim()}` : "Observações: —",
+      "",
+      "Podem confirmar a disponibilidade e me orientar sobre os próximos passos?",
+    ].join("\n");
+
+    return `https://wa.me/5583998458019?text=${encodeURIComponent(message)}`;
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!isReady) return;
-    setDemoComplete(true);
-    track("demo_completed", { plan: currentPlan.name });
+    if (!isReady || isSubmitting) return;
+
+    const whatsappWindow = window.open("about:blank", "_blank");
+    if (whatsappWindow) whatsappWindow.opener = null;
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const attribution = getAttribution();
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          plan: currentPlan.name,
+          price: currentPlan.price,
+          objective,
+          preferredPeriod: period,
+          preferredDate,
+          experience,
+          notes,
+          consent,
+          website,
+          ...attribution,
+        }),
+      });
+      const result = (await response.json()) as { lead?: { id: number }; error?: string };
+      if (!response.ok || !result.lead) throw new Error(result.error || "Não foi possível concluir.");
+
+      void fetch("/api/leads", {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ id: result.lead.id, whatsappOpened: true }),
+        keepalive: true,
+      });
+      track("whatsapp_opened", { leadId: String(result.lead.id), plan: currentPlan.name });
+      const destination = buildWhatsappUrl(result.lead.id);
+      if (whatsappWindow) whatsappWindow.location.href = destination;
+      else window.location.href = destination;
+    } catch (error) {
+      whatsappWindow?.close();
+      setSubmitError(error instanceof Error ? error.message : "Não foi possível concluir. Tente novamente.");
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -67,7 +133,7 @@ export function PlanSelector({ prices }: { prices: { individual: string; casal: 
       <ol className="enrollment-progress" aria-label="Etapas da matrícula">
         <li className="is-complete"><span>1</span><div><strong>Plano</strong><small>Escolha concluída</small></div></li>
         <li className={isReady ? "is-complete" : "is-current"}><span>2</span><div><strong>Seus dados</strong><small>Preencha para avançar</small></div></li>
-        <li className={demoComplete ? "is-complete" : isReady ? "is-current" : ""}><span>3</span><div><strong>Demonstração</strong><small>Nenhum dado é enviado</small></div></li>
+        <li className={isReady ? "is-current" : ""}><span>3</span><div><strong>WhatsApp</strong><small>Envio para a equipe</small></div></li>
       </ol>
 
       <div className="plan-grid" role="radiogroup" aria-label="Escolha seu plano">
@@ -96,17 +162,17 @@ export function PlanSelector({ prices }: { prices: { individual: string; casal: 
       <div className="enrollment-box">
         <div className="enrollment-summary">
           <span className="step-label">MATRÍCULA ASSISTIDA</span>
-          <h2>TESTE O FLUXO.<br /><em>SEM ENVIAR DADOS.</em></h2>
-          <p>Use informações fictícias para experimentar como seria uma matrícula automatizada.</p>
+          <h2>SEUS DADOS.<br /><em>MENSAGEM PRONTA.</em></h2>
+          <p>Preencha uma vez e nós organizamos as informações para a equipe receber tudo no WhatsApp.</p>
           <div className="selected-plan-summary" aria-live="polite">
             <small>PLANO SELECIONADO</small>
             <strong>{currentPlan.name}</strong>
             <span>R$ {currentPlan.price} <small>por pessoa</small></span>
           </div>
           <ul className="automation-benefits">
-            <li><span>✓</span> Experiência completa de demonstração</li>
-            <li><span>✓</span> Nenhum contato com a academia</li>
-            <li><span>✓</span> Nenhum dado pessoal armazenado</li>
+            <li><span>✓</span> Dados organizados automaticamente</li>
+            <li><span>✓</span> Atendimento direto com a academia</li>
+            <li><span>✓</span> Sem criar conta ou baixar aplicativo</li>
           </ul>
         </div>
 
@@ -127,28 +193,28 @@ export function PlanSelector({ prices }: { prices: { individual: string; casal: 
 
           <div className="form-grid">
             <label className="form-field form-field-wide" htmlFor="student-name">
-              <span>Nome fictício *</span>
+              <span>Nome completo *</span>
               <input
                 id="student-name"
                 type="text"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-                placeholder="Ex.: Visitante Demo"
-                autoComplete="off"
+                placeholder="Como podemos chamar você?"
+                autoComplete="name"
                 required
               />
             </label>
 
             <label className="form-field" htmlFor="student-phone">
-              <span>Telefone fictício *</span>
+              <span>Seu WhatsApp *</span>
               <input
                 id="student-phone"
                 type="tel"
                 inputMode="tel"
                 value={phone}
                 onChange={(event) => setPhone(formatPhone(event.target.value))}
-                placeholder="(00) 00000-0000"
-                autoComplete="off"
+                placeholder="(83) 99999-9999"
+                autoComplete="tel"
                 required
               />
             </label>
@@ -200,19 +266,24 @@ export function PlanSelector({ prices }: { prices: { individual: string; casal: 
               <small>{notes.length}/240</small>
             </label>
 
+            <label className="form-honeypot" aria-hidden="true">
+              Website
+              <input tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} />
+            </label>
+
           </div>
 
           <label className="consent-field">
             <input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} required />
-            <span>Entendo que esta é uma simulação e usarei somente dados fictícios. Li o <a href="/privacidade" target="_blank">aviso da demonstração</a>.</span>
+            <span>Autorizo a Espaço Fit a usar estes dados para entrar em contato sobre minha matrícula. Li o <a href="/privacidade" target="_blank">aviso de privacidade</a>.</span>
           </label>
 
-          {demoComplete ? <p className="form-success" role="status">Demonstração concluída. Nenhum dado foi enviado ou armazenado.</p> : null}
-          <button className="button button-primary enrollment-submit" type="submit" disabled={!isReady}>
-            <span>{demoComplete ? "Demonstração concluída" : isReady ? "Concluir demonstração" : "Complete os campos obrigatórios"}</span>
+          {submitError ? <p className="form-error" role="alert">{submitError}</p> : null}
+          <button className="button button-primary enrollment-submit" type="submit" disabled={!isReady || isSubmitting}>
+            <span>{isSubmitting ? "Salvando seus dados..." : isReady ? "Salvar e abrir o WhatsApp" : "Complete os campos obrigatórios"}</span>
             <b aria-hidden="true">→</b>
           </button>
-          <small className="form-privacy">Este portfólio não envia os dados preenchidos e não abre contato externo.</small>
+          <small className="form-privacy">Ao continuar, o WhatsApp abrirá com a mensagem pronta. Basta revisar e tocar em enviar.</small>
         </form>
       </div>
     </div>

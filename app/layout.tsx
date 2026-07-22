@@ -49,6 +49,7 @@ export default function RootLayout({
               "@type": "ExerciseGym",
               name: "Espaço Fit Academia",
               url: siteUrl,
+              telephone: "+55 83 99845-8019",
               image: `${siteUrl}/espaco-fit-fachada.png`,
               priceRange: "R$ 65–75",
               address: {

@@ -6,18 +6,29 @@ import { BrandLogo } from "./BrandLogo";
 
 type MenuId = "academy" | "plans" | "start";
 
+const whatsappUrl =
+  "https://wa.me/5583998458019?text=Oi%2C%20Espa%C3%A7o%20Fit!%20Quero%20agendar%20uma%20aula%20experimental.";
+
 export function SiteHeader() {
   const [openMenu, setOpenMenu] = useState<MenuId | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const toggleMenu = (menu: MenuId) => setOpenMenu((current) => current === menu ? null : menu);
-  const closeMenus = () => setOpenMenu(null);
+  const closeMenus = () => {
+    setOpenMenu(null);
+    setMobileOpen(false);
+  };
 
   useEffect(() => {
+    const closeAllMenus = () => {
+      setOpenMenu(null);
+      setMobileOpen(false);
+    };
     const handlePointerDown = (event: PointerEvent) => {
-      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) setOpenMenu(null);
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) closeAllMenus();
     };
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpenMenu(null);
+      if (event.key === "Escape") closeAllMenus();
     };
 
     document.addEventListener("pointerdown", handlePointerDown);
@@ -78,7 +89,7 @@ export function SiteHeader() {
             <div className="mega-panel mega-start" id="menu-start" aria-hidden={openMenu !== "start"}>
               <div className="mega-column">
                 <small>SEU PRÓXIMO PASSO</small>
-                <Link href="/matricula" onClick={closeMenus}><b>Aula experimental</b><span>Veja como funciona o fluxo demonstrativo.</span></Link>
+                <a href={whatsappUrl} target="_blank" rel="noreferrer" onClick={closeMenus}><b>Aula experimental</b><span>Converse com a equipe pelo WhatsApp.</span></a>
                 <Link href="/matricula" onClick={closeMenus}><b>Matricule-se</b><span>Escolha o plano e finalize online.</span></Link>
               </div>
               <div className="mega-mini-stat"><strong>10+</strong><span>anos treinando São José da Mata</span></div>
@@ -88,17 +99,18 @@ export function SiteHeader() {
           <a className="mega-direct" href="https://www.instagram.com/espacofitsjm/" target="_blank" rel="noreferrer">Instagram</a>
         </nav>
 
-        <details className="mobile-menu">
-          <summary aria-label="Abrir menu"><span /> <span /> <span /></summary>
-          <nav aria-label="Navegação móvel">
-            <Link href="/#estrutura">A academia</Link>
-            <Link href="/#modalidades">Modalidades</Link>
-            <Link href="/#horarios">Horários</Link>
-            <Link href="/#planos">Planos</Link>
-            <Link href="/#localizacao">Localização</Link>
-            <Link href="/matricula">Matricule-se</Link>
+        <div className={`mobile-menu ${mobileOpen ? "is-open" : ""}`}>
+          <button type="button" aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => setMobileOpen((current) => !current)}><span /> <span /> <span /></button>
+          <nav id="mobile-navigation" aria-label="Navegação móvel" aria-hidden={!mobileOpen}>
+            <Link href="/#estrutura" onClick={closeMenus}>A academia</Link>
+            <Link href="/#modalidades" onClick={closeMenus}>Modalidades</Link>
+            <Link href="/#horarios" onClick={closeMenus}>Horários</Link>
+            <Link href="/#planos" onClick={closeMenus}>Planos</Link>
+            <Link href="/#localizacao" onClick={closeMenus}>Localização</Link>
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" onClick={closeMenus}>Aula experimental</a>
+            <Link href="/matricula" onClick={closeMenus}>Matricule-se</Link>
           </nav>
-        </details>
+        </div>
 
         <Link className="header-cta" href="/matricula" data-track="header_matricula" onClick={closeMenus}>
           Matricule-se <span aria-hidden="true">→</span>

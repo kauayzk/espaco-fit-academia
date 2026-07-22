@@ -22,18 +22,18 @@ test("identifies the project as the Espaço Fit portfolio", async () => {
   assert.doesNotMatch(readme, /vinext-starter/i);
 });
 
-test("keeps a privacy-safe demonstration enrollment flow", async () => {
+test("sends a validated enrollment to the academy WhatsApp", async () => {
   const [enrollment, leadsApi, eventsApi] = await Promise.all([
     read("app/matricula/PlanSelector.tsx"),
     read("app/api/leads/route.ts"),
     read("app/api/events/route.ts"),
   ]);
 
-  assert.match(enrollment, /Concluir demonstração/);
-  assert.match(enrollment, /Nenhum dado foi enviado ou armazenado/);
-  assert.doesNotMatch(enrollment, /wa\.me/);
-  assert.match(leadsApi, /Nenhum dado foi enviado ou armazenado/);
-  assert.match(eventsApi, /demo_completed/);
+  assert.match(enrollment, /Salvar e abrir o WhatsApp/);
+  assert.match(enrollment, /wa\.me\/5583998458019/);
+  assert.match(enrollment, /Autorizo a Espaço Fit/);
+  assert.match(leadsApi, /delivery: "whatsapp"/);
+  assert.match(eventsApi, /whatsapp_opened/);
 });
 
 test("keeps the original centered hero compact and only one mega menu active", async () => {
@@ -49,7 +49,18 @@ test("keeps the original centered hero compact and only one mega menu active", a
   assert.match(styles, /\.ref-hero \{[\s\S]*min-height: auto/);
   assert.match(styles, /\.ref-hero \{[\s\S]*display: block/);
   assert.match(styles, /\.ref-orb \{[\s\S]*position: absolute/);
+  assert.match(styles, /\.mobile-menu\.is-open nav/);
+  assert.match(styles, /overflow-x: clip/);
+  assert.match(styles, /\.motion-ready body::after \{[\s\S]*display: none !important/);
   assert.match(motion, /const revealMotions = \["up", "left", "scale", "right"\]/);
+});
+
+test("removes the redundant schedule and pricing image gallery", async () => {
+  const home = await read("app/page.tsx");
+
+  assert.doesNotMatch(home, /espaco-fit-horarios\.png/);
+  assert.doesNotMatch(home, /espaco-fit-valores\.png/);
+  assert.doesNotMatch(home, /gallery-content-note/);
 });
 
 test("protects the owner dashboard with an environment allowlist", async () => {

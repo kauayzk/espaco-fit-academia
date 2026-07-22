@@ -5796,3 +5796,547 @@ section[id] {
     display: none;
   }
 }
+
+/* Production mobile pass: keep navigation, cards and decorative layers inside the viewport. */
+.motion-ready body::after {
+  display: none !important;
+}
+
+@media (max-width: 1180px) {
+.mobile-menu > button {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: grid;
+    place-content: center;
+    gap: 4px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 50%;
+    background: #1c1e21;
+    cursor: pointer;
+  }
+
+  .mobile-menu > button span {
+    width: 17px;
+    height: 2px;
+    display: block;
+    border-radius: 2px;
+    background: #fff;
+    transition: transform .24s ease, opacity .2s ease;
+  }
+
+  .mobile-menu.is-open > button span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .mobile-menu.is-open > button span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu.is-open > button span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .mobile-menu nav {
+    position: fixed;
+    z-index: 220;
+    top: 86px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-height: calc(100dvh - 102px);
+    padding: 10px;
+    display: none;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-radius: 20px;
+  }
+
+  .mobile-menu.is-open nav {
+    display: flex;
+  }
+
+  .mobile-menu nav a {
+    min-height: 50px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+
+  .mobile-menu nav a:last-child {
+    border-bottom: 0;
+    background: var(--ref-orange);
+    color: #fff;
+  }
+}
+
+.mobile-menu > button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  [data-reveal],
+  [data-reveal][data-reveal-motion="left"],
+  [data-reveal][data-reveal-motion="right"],
+  [data-reveal][data-reveal-motion="scale"] {
+    transform: translate3d(0, 18px, 0) !important;
+  }
+
+  [data-reveal].is-visible {
+    transform: none !important;
+  }
+
+  html,
+  body,
+  .ref-site,
+  .enrollment-page {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    padding-bottom: 0;
+  }
+
+  .ref-site {
+    padding-bottom: 78px;
+  }
+
+  section[id] {
+    scroll-margin-top: 92px;
+  }
+
+  .ref-header.site-header {
+    position: fixed;
+    z-index: 200;
+    padding: 8px;
+  }
+
+  .ref-header .header-inner {
+    width: 100%;
+    min-width: 0;
+    min-height: 64px;
+    padding: 6px 7px 6px 9px;
+    gap: 8px;
+  }
+
+  .ref-header .brand-logo-crop {
+    width: 116px;
+    height: 42px;
+  }
+
+  .ref-header .brand-logo-crop img {
+    top: -6px;
+    left: -38px;
+    width: 210px;
+  }
+
+  .ref-header .header-cta {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .mobile-menu {
+    position: static;
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+
+  .mobile-menu > button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mobile-menu nav {
+    top: 80px;
+    left: 8px;
+    right: 8px;
+    max-height: calc(100dvh - 94px);
+  }
+
+  .scroll-progress {
+    left: 20px;
+    right: 20px;
+  }
+
+  .ref-hero {
+    padding: 104px 14px 58px;
+    background:
+      radial-gradient(circle at 16% 16%, rgba(255,91,26,.16), transparent 29%),
+      #070809;
+  }
+
+  .ref-kicker {
+    margin-bottom: 18px;
+    font-size: 10px;
+  }
+
+  .ref-hero h1 {
+    font-size: clamp(48px, 14.5vw, 64px);
+    line-height: .9;
+  }
+
+  .ref-hero-inner > p {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .ref-hero-actions {
+    margin-top: 24px;
+    gap: 10px;
+  }
+
+  .ref-hero-inner > small {
+    margin-top: 13px;
+    line-height: 1.45;
+  }
+
+  .ref-hero-facts {
+    margin-top: 20px;
+    border-radius: 15px;
+  }
+
+  .ref-hero-stage {
+    height: 400px;
+    margin-top: 44px;
+    padding: 8px;
+    border-radius: 25px;
+  }
+
+  .ref-stage-photo,
+  .ref-stage-photo::after {
+    border-radius: 18px;
+  }
+
+  .ref-stage-photo::after {
+    inset: 8px;
+  }
+
+  .ref-float {
+    padding: 12px 13px;
+    border-radius: 14px;
+  }
+
+  .ref-float-hours {
+    top: 16px;
+    left: 16px;
+    min-width: 148px;
+  }
+
+  .ref-float-since {
+    top: 14px;
+    right: 14px;
+    width: 82px;
+    height: 82px;
+  }
+
+  .ref-float-community,
+  .ref-orb {
+    display: none;
+  }
+
+  .ref-trust {
+    padding: 44px 14px;
+  }
+
+  .ref-section {
+    padding: 66px 14px;
+  }
+
+  .ref-section-heading {
+    margin-bottom: 34px;
+  }
+
+  .ref-section-heading h2,
+  .ref-journey h2,
+  .ref-location h2,
+  .ref-final h2 {
+    font-size: clamp(41px, 12.5vw, 56px);
+  }
+
+  .ref-bento {
+    gap: 12px;
+    grid-template-rows: 360px auto auto auto;
+  }
+
+  .ref-bento-card {
+    padding: 23px;
+    border-radius: 23px;
+  }
+
+  .ref-bento-photo {
+    padding: 0;
+  }
+
+  .ref-bento-orange,
+  .ref-bento-dark {
+    min-height: 290px;
+  }
+
+  .ref-bento-light {
+    padding: 25px 22px;
+  }
+
+  .ref-journey {
+    width: calc(100% - 12px);
+    padding: 62px 16px;
+    gap: 42px;
+    border-radius: 27px;
+  }
+
+  .ref-journey-steps {
+    gap: 12px;
+  }
+
+  .ref-step {
+    min-height: 0;
+    padding: 24px 20px;
+    grid-template-columns: 46px 1fr;
+    gap: 15px;
+    border-radius: 22px;
+  }
+
+  .ref-step h3 {
+    margin-top: 12px;
+    font-size: 31px;
+  }
+
+  .ref-price-grid {
+    gap: 12px;
+  }
+
+  .ref-price-grid article {
+    min-height: 330px;
+    padding: 26px 22px;
+    border-radius: 23px;
+  }
+
+  .ref-price-grid strong {
+    font-size: clamp(58px, 17vw, 72px);
+  }
+
+  .ref-price-featured {
+    transform: none;
+  }
+
+  .ref-location {
+    width: calc(100% - 16px);
+    margin-bottom: 64px;
+    padding: 54px 18px 18px;
+    gap: 38px;
+    border-radius: 27px;
+  }
+
+  .ref-location-visual,
+  .ref-location-visual img {
+    min-height: 360px;
+    height: 360px;
+  }
+
+  .ref-proof {
+    width: calc(100% - 20px);
+    margin-bottom: 64px;
+    padding: 36px 20px;
+    gap: 34px;
+    border-radius: 27px;
+  }
+
+  .ref-proof-grid {
+    gap: 10px;
+  }
+
+  .ref-proof-grid article {
+    min-height: 128px;
+    padding: 22px;
+  }
+
+  .ref-faq {
+    gap: 36px;
+  }
+
+  .ref-final {
+    padding: 76px 14px 92px;
+  }
+
+  .mobile-action-bar {
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    height: 62px;
+    border-radius: 17px;
+  }
+
+  .enrollment-page .enrollment-hero {
+    padding: 104px 16px 62px;
+  }
+
+  .enrollment-page .enrollment-hero::after {
+    display: none;
+  }
+
+  .enrollment-page .back-link {
+    margin-bottom: 20px;
+  }
+
+  .enrollment-logo {
+    margin-bottom: 20px;
+  }
+
+  .enrollment-logo .brand-logo-crop {
+    width: 204px;
+    height: 62px;
+  }
+
+  .enrollment-logo .brand-logo-crop img {
+    top: -10px;
+    left: -62px;
+    width: 344px;
+  }
+
+  .enrollment-page .enrollment-hero h1 {
+    font-size: clamp(46px, 14vw, 66px);
+    line-height: .9;
+  }
+
+  .enrollment-page .enrollment-hero-inner > p:last-child {
+    margin-top: 22px;
+    font-size: 15px;
+  }
+
+  .enrollment-plans {
+    width: 100%;
+    padding: 54px 12px 68px;
+  }
+
+  .plans-heading {
+    margin-bottom: 24px;
+    gap: 10px;
+  }
+
+  .plan-grid {
+    width: 100%;
+    gap: 14px;
+  }
+
+  .plan-card,
+  .plan-card.is-selected {
+    width: 100%;
+    min-width: 0;
+    min-height: 320px;
+    padding: 27px 23px;
+    border-radius: 23px;
+    transform: none;
+  }
+
+  .plan-check {
+    top: 23px;
+    right: 23px;
+  }
+
+  .popular-tag {
+    left: 23px;
+  }
+
+  .plan-name {
+    padding-top: 16px;
+    font-size: 32px;
+  }
+
+  .plan-price {
+    margin: 30px 0 20px;
+    font-size: clamp(60px, 18vw, 76px);
+  }
+
+  .plan-note {
+    min-height: 0;
+  }
+
+  .plan-select {
+    margin-top: auto;
+  }
+
+  .enrollment-progress {
+    margin-bottom: 32px;
+  }
+
+  .enrollment-page .enrollment-box {
+    margin-top: 18px;
+    padding: 18px;
+    gap: 28px;
+    border-radius: 24px;
+  }
+
+  .enrollment-box h2 {
+    font-size: clamp(42px, 13vw, 58px);
+  }
+
+  .selected-plan-summary {
+    margin-top: 24px;
+    padding: 20px;
+  }
+
+  .enrollment-page .enrollment-form {
+    padding: 22px 16px;
+    border-radius: 22px;
+  }
+
+  .form-heading {
+    margin-bottom: 22px;
+    align-items: flex-start;
+  }
+
+  .form-grid {
+    gap: 14px;
+  }
+
+  .enrollment-action .form-field input,
+  .enrollment-action .form-field select,
+  .enrollment-action .form-field textarea {
+    min-height: 54px;
+    font-size: 16px;
+  }
+
+  .consent-field {
+    font-size: 11px !important;
+  }
+
+  .enrollment-submit {
+    min-height: 58px;
+    padding-inline: 17px;
+  }
+
+  .enrollment-submit span {
+    font-size: 11px;
+  }
+
+  .enrollment-trust {
+    padding: 0 12px 62px;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 370px) {
+  .ref-header .brand-logo-crop {
+    width: 102px;
+  }
+
+  .ref-header .brand-logo-crop img {
+    left: -34px;
+    width: 190px;
+  }
+
+  .ref-header .header-cta {
+    padding: 0 10px;
+    font-size: 9px;
+  }
+
+  .ref-hero h1 {
+    font-size: 46px;
+  }
+}
