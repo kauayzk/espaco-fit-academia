@@ -5878,6 +5878,8 @@ section[id] {
 
 @media (max-width: 760px) {
   .motion-ready body > main {
+    animation: none !important;
+    filter: none !important;
     transform: none !important;
   }
 
