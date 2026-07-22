@@ -70,6 +70,7 @@ test("credits the developer in every public footer", async () => {
   assert.match(footer, /Desenvolvido por Kauã Araujo/);
   assert.match(footer, /wa\.me\/5511977147610/);
   assert.match(footer, /Falar com Kauã Araujo pelo WhatsApp/);
+  assert.doesNotMatch(footer, /Área do proprietário/);
 });
 
 test("protects the owner dashboard with an environment allowlist", async () => {

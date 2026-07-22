@@ -13,7 +13,6 @@ export function SiteFooter() {
         <a href="https://www.instagram.com/espacofitsjm/" target="_blank" rel="noreferrer">Instagram ↗</a>
         <a href="tel:+5583998458019">(83) 99845-8019</a>
         <a href={mapsUrl} target="_blank" rel="noreferrer">Como chegar ↗</a>
-        <a href="/gestao">Área do proprietário</a>
       </div>
       <div className="footer-meta">
         <small>© {new Date().getFullYear()} Espaço Fit Academia</small>
