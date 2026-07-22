@@ -826,10 +826,30 @@ footer > p {
   text-transform: uppercase;
 }
 
-footer > small {
+.footer-meta {
   grid-column: 2 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.footer-meta small {
   color: #656862;
   font-size: 10px;
+}
+
+.developer-credit {
+  color: #a6a8a4;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.developer-credit:hover {
+  color: var(--orange);
 }
 
 .mobile-whatsapp {
@@ -1090,7 +1110,7 @@ footer > small {
   }
 
   .brand-footer,
-  footer > small {
+  footer > .footer-meta {
     grid-row: auto;
     grid-column: auto;
   }
@@ -6103,14 +6123,26 @@ section[id] {
   .ref-step {
     min-height: 0;
     padding: 24px 20px;
-    grid-template-columns: 46px 1fr;
-    gap: 15px;
+    grid-template-columns: 50px minmax(0, 1fr);
+    gap: 14px;
     border-radius: 22px;
+  }
+
+  .ref-step > span {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 19px;
+  }
+
+  .ref-step > div {
+    min-width: 0;
   }
 
   .ref-step h3 {
     margin-top: 12px;
-    font-size: 31px;
+    font-size: clamp(25px, 7.5vw, 31px);
+    overflow-wrap: anywhere;
   }
 
   .ref-price-grid {

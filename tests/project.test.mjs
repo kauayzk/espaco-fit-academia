@@ -63,6 +63,14 @@ test("removes the redundant schedule and pricing image gallery", async () => {
   assert.doesNotMatch(home, /gallery-content-note/);
 });
 
+test("credits the developer in every public footer", async () => {
+  const footer = await read("app/components/SiteFooter.tsx");
+
+  assert.match(footer, /Desenvolvido por Kauã Araujo/);
+  assert.match(footer, /wa\.me\/5511977147610/);
+  assert.match(footer, /Falar com Kauã Araujo pelo WhatsApp/);
+});
+
 test("protects the owner dashboard with an environment allowlist", async () => {
   const [managementPage, adminAuth, gitignore] = await Promise.all([
     read("app/gestao/page.tsx"),
