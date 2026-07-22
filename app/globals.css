@@ -5877,6 +5877,10 @@ section[id] {
 }
 
 @media (max-width: 760px) {
+  .motion-ready body > main {
+    transform: none !important;
+  }
+
   [data-reveal],
   [data-reveal][data-reveal-motion="left"],
   [data-reveal][data-reveal-motion="right"],
